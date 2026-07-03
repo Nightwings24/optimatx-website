@@ -4,6 +4,9 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { JuliaSet } from "@/components/islands/JuliaSet";
 import { CellularAutomaton } from "@/components/islands/CellularAutomaton";
 import { MaurerRose } from "@/components/islands/MaurerRose";
+import { Phyllotaxis } from "@/components/islands/Phyllotaxis";
+import { Harmonograph } from "@/components/islands/Harmonograph";
+import { FractalTree } from "@/components/islands/FractalTree";
 import { catVar, type CategoryColor } from "@/lib/categories";
 
 export const metadata: Metadata = {
@@ -85,6 +88,34 @@ export default function GalleryPage() {
             className="lg:col-span-2"
           >
             <CellularAutomaton />
+          </Piece>
+
+          <Piece
+            tag="Golden angle"
+            color="lime"
+            title="Phyllotaxis"
+            desc="Place each seed at angle i·137.5° and radius √i - the golden angle (from φ, the ratio in our logo). It's the one angle that packs seeds with no gaps, exactly like a sunflower. Shift it a fraction of a degree and the spirals reorganize."
+          >
+            <Phyllotaxis />
+          </Piece>
+
+          <Piece
+            tag="Damped oscillation"
+            color="violet"
+            title="Harmonograph"
+            desc="Two pendulums winding down trace a curve: x and y each a decaying sine. Near-integer frequency ratios give the classic looping figures - Victorian scientists built machines just to draw these."
+          >
+            <Harmonograph />
+          </Piece>
+
+          <Piece
+            tag="Recursion"
+            color="accent2"
+            title="Fractal tree"
+            desc="One rule - split into two branches at an angle, each a bit shorter - applied all the way down. A living thing, from a single line of logic. Widen the angle and watch it bloom."
+            className="lg:col-span-2"
+          >
+            <FractalTree />
           </Piece>
         </div>
       </section>
