@@ -62,6 +62,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Team", href: "/team" },
       { label: "Alumni", href: "/alumni" },
       { label: "Events", href: "/events" },
+      { label: "Competitions", href: "/competitions" },
       { label: "Join", href: "/join" },
       { label: "FAQ", href: "/faq" },
     ],

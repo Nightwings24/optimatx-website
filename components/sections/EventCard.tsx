@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { catStyle, catVar } from "@/lib/categories";
-import type { ClubEvent } from "@/content/events";
+import { detailHref, type ClubEvent } from "@/content/events";
 import { cn } from "@/lib/cn";
 
 // Event card (design.md §6.7): a soft two-accent gradient media header with a
@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 // details / registration target.
 export function EventCard({ event }: { event: ClubEvent }) {
   const c = catVar(event.color);
-  const target = event.href ?? event.registerUrl ?? "/events";
+  const target = detailHref(event);
   const external = target.startsWith("http");
 
   const inner = (

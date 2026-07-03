@@ -217,12 +217,17 @@ export function LPVisualizer({ scenarios }: { scenarios: LPScenario[] }) {
                 strokeWidth="2"
               />
               <text
-                x={sx(result.optimum.x) + 10}
+                x={
+                  result.optimum.x > xMax * 0.7
+                    ? sx(result.optimum.x) - 10
+                    : sx(result.optimum.x) + 10
+                }
                 y={sy(result.optimum.y) - 8}
                 fill="var(--magenta)"
                 fontSize="12"
                 fontWeight="700"
                 fontFamily="var(--font-mono)"
+                textAnchor={result.optimum.x > xMax * 0.7 ? "end" : "start"}
               >
                 ({fmt(result.optimum.x)}, {fmt(result.optimum.y)})
               </text>

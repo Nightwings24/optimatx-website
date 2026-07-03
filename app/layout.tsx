@@ -8,6 +8,9 @@ import { SkipLink } from "@/components/chrome/SkipLink";
 import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
 import { SITE } from "@/lib/site";
+import type { CommandItem } from "@/lib/nav";
+import { getAllPosts } from "@/lib/blog";
+import { problems } from "@/content/problems";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -64,6 +67,32 @@ export const viewport: Viewport = {
   ],
 };
 
+// Index problems + blog posts so the ⌘K palette searches real content, not just
+// top-level routes. Built once at build time (static export).
+// `fold` strips diacritics so an ASCII search ("sierpinski") still matches a
+// title carrying accents ("Sierpiński"); it's added as a keyword.
+const fold = (s: string) =>
+  s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+
+const contentCommands: CommandItem[] = [
+  ...problems.map((p) => ({
+    id: `problem-${p.slug}`,
+    glyph: "∫",
+    label: `#${p.number} · ${p.title}`,
+    type: "route" as const,
+    href: `/problems/${p.slug}`,
+    keywords: ["problem", "potw", p.difficulty, fold(p.title)],
+  })),
+  ...getAllPosts().map((p) => ({
+    id: `post-${p.slug}`,
+    glyph: "∂",
+    label: p.title,
+    type: "route" as const,
+    href: `/blog/${p.slug}`,
+    keywords: ["blog", "article", ...p.tags, fold(p.title)],
+  })),
+];
+
 export default function RootLayout({
   children,
 }: {
@@ -77,7 +106,7 @@ export default function RootLayout({
     >
       <body className="grid-bg min-h-dvh">
         <ThemeProvider>
-          <CommandPaletteProvider>
+          <CommandPaletteProvider extraCommands={contentCommands}>
             <AmbientGlow />
             <SkipLink />
             <Nav />

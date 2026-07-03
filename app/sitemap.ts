@@ -3,6 +3,7 @@ import { allRoutes } from "@/lib/nav";
 import { SITE } from "@/lib/site";
 import { getAllPosts } from "@/lib/blog";
 import { problems } from "@/content/problems";
+import { events } from "@/content/events";
 
 export const dynamic = "force-static";
 
@@ -29,5 +30,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...pages, ...posts, ...probs];
+  const evs = events.map((e) => ({
+    url: `${SITE.url}/events/${e.id}/`,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...pages, ...posts, ...probs, ...evs];
 }

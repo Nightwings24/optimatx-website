@@ -172,6 +172,7 @@ export function FormspreeForm({
                 name={f.name}
                 rows={4}
                 required={f.required}
+                disabled={submitting}
                 placeholder={f.placeholder}
                 aria-invalid={!!err}
                 aria-describedby={describedBy}
@@ -204,6 +205,7 @@ export function FormspreeForm({
                 name={f.name}
                 type={f.type ?? "text"}
                 required={f.required}
+                disabled={submitting}
                 placeholder={f.placeholder}
                 autoComplete={f.autoComplete}
                 aria-invalid={!!err}

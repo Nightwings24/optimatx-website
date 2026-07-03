@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { EventCard } from "@/components/sections/EventCard";
 import { CalendarEmbed } from "@/components/sections/Embeds";
@@ -47,6 +48,25 @@ export default function EventsPage() {
           </div>
         </section>
       )}
+
+      <section className="container-site pb-16">
+        <Link
+          href="/competitions"
+          className="group flex flex-wrap items-center justify-between gap-3 rounded-card border-[1.5px] border-line2 bg-surface p-6 transition-colors hover:border-accent"
+        >
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink3">
+              Competitions & prep
+            </p>
+            <p className="mt-1 text-[16px] font-bold text-ink">
+              Training for SRMC, Simon Marais, or a quant interview?
+            </p>
+          </div>
+          <span className="font-mono text-[14px] font-bold text-accent">
+            Competition hub →
+          </span>
+        </Link>
+      </section>
 
       <section className="container-site pb-16 md:pb-20">
         <SectionEyebrow color="accent">Calendar</SectionEyebrow>

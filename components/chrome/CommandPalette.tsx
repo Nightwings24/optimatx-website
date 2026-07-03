@@ -12,7 +12,7 @@ import { createPortal } from "react-dom";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { paletteCommands } from "@/lib/nav";
+import { paletteCommands, type CommandItem } from "@/lib/nav";
 import { Kbd } from "@/components/ui/Kbd";
 
 // ⌘K command palette (design.md §6.10). The provider holds the open state,
@@ -35,8 +35,12 @@ export function useCommandPalette(): PaletteApi {
 
 export function CommandPaletteProvider({
   children,
+  extraCommands = [],
 }: {
   children: React.ReactNode;
+  // Content items (problems, blog posts) indexed at build time so the palette
+  // searches actual content, not just top-level routes.
+  extraCommands?: CommandItem[];
 }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -86,6 +90,9 @@ export function CommandPaletteProvider({
   }, [open]);
 
   const api: PaletteApi = { open: openPalette, close: closePalette };
+  const commands = extraCommands.length
+    ? [...paletteCommands, ...extraCommands]
+    : paletteCommands;
 
   function run(fn: () => void) {
     closePalette();
@@ -133,7 +140,7 @@ export function CommandPaletteProvider({
                 <Command.Empty className="px-3 py-6 text-center text-sm text-ink3">
                   No results.
                 </Command.Empty>
-                {paletteCommands.map((cmd) => (
+                {commands.map((cmd) => (
                   <Command.Item
                     key={cmd.id}
                     value={cmd.label}

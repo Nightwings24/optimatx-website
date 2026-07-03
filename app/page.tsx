@@ -9,6 +9,7 @@ import { HighlightCard } from "@/components/sections/HighlightCard";
 import { EventCard } from "@/components/sections/EventCard";
 import { StatBand } from "@/components/sections/StatBand";
 import { POTWCard } from "@/components/sections/POTWCard";
+import { NewsletterSignup } from "@/components/sections/NewsletterSignup";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { whatsInsideCards } from "@/content/cards";
 import { upcomingEvents } from "@/content/events";
@@ -109,6 +110,11 @@ export default function HomePage() {
             Nothing scheduled right now. Check back soon.
           </p>
         )}
+      </section>
+
+      {/* Newsletter */}
+      <section className="container-site pb-16 md:pb-24">
+        <NewsletterSignup />
       </section>
 
       {/* CTA */}
