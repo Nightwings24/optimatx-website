@@ -9,12 +9,10 @@
     "build": "next build",
     "start": "next start",
     "preview": "npx serve out",
-    "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "extract:logo": "node scripts/extract-logo.mjs"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.20",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "gray-matter": "^4.0.3",
@@ -31,6 +29,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/katex": "^0.16.7",
     "@types/node": "^22.13.1",
     "@types/react": "^19.2.0",
@@ -38,5 +37,8 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

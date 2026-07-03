@@ -27,9 +27,14 @@ export function JuliaSet() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    const context = ctx;
 
-    const img = ctx.createImageData(SIZE, SIZE);
-    const data = img.data;
+    // Coalesce rapid slider changes into one render per animation frame, so
+    // dragging skips stale intermediate computes and stays smooth on low-end
+    // devices.
+    const raf = requestAnimationFrame(() => {
+      const img = context.createImageData(SIZE, SIZE);
+      const data = img.data;
     const scale = 3.2 / SIZE;
     const log2 = Math.log(2);
 
@@ -62,7 +67,9 @@ export function JuliaSet() {
         data[idx + 3] = 255;
       }
     }
-    ctx.putImageData(img, 0, 0);
+      context.putImageData(img, 0, 0);
+    });
+    return () => cancelAnimationFrame(raf);
   }, [re, im]);
 
   return (

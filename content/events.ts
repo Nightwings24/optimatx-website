@@ -33,7 +33,7 @@ export const events: ClubEvent[] = [
     tag: "Flagship",
     blurb:
       "Bracket-style integral speed-solving. Last solver standing takes the wizard hat.",
-    affordance: "Register →",
+    affordance: "Learn more →",
     registerUrl: "/join",
     status: "upcoming",
   },

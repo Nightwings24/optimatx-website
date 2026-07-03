@@ -289,6 +289,13 @@ body {
   content: none;
 }
 
+/* wide tables scroll instead of overflowing on narrow screens */
+.prose :where(table):not(:where([class~="not-prose"] *)) {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 /* highlight.js tokens (rehype-highlight) - dark, on-brand */
 .hljs {
   color: #e9ecf4;

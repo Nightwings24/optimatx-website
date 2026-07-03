@@ -24,7 +24,9 @@ const mono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  // origin only - Next appends the basePath to the relative OG-image route, so
+  // using the full sub-path base here would double it.
+  metadataBase: new URL(SITE.origin),
   title: {
     default: `${SITE.name} - Mathematics Society, IIT Patna`,
     template: `%s · ${SITE.name}`,
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    url: SITE.url,
+    url: `${SITE.url}/`,
     siteName: SITE.name,
     title: `${SITE.name} - Mathematics Society, IIT Patna`,
     description: SITE.description,
@@ -51,7 +53,8 @@ export const metadata: Metadata = {
     title: `${SITE.name} - Mathematics Society, IIT Patna`,
     description: SITE.description,
   },
-  alternates: { canonical: "/" },
+  // No site-wide canonical: a static "/" would canonicalize every page to the
+  // home URL. Pages self-canonicalize by their own URL instead.
 };
 
 export const viewport: Viewport = {

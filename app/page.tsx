@@ -63,8 +63,8 @@ export default function HomePage() {
           What&apos;s inside
         </h2>
         <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink2">
-          Nine kinds of content, one hub. Everything the build list calls for -
-          color-coded so you always know where you are.
+          Six kinds of content, one hub, color-coded so you always know where
+          you are.
         </p>
         <div className="mt-8 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
           {whatsInsideCards.map((card) => (
@@ -104,6 +104,11 @@ export default function HomePage() {
             <EventCard key={event.id} event={event} />
           ))}
         </div>
+        {upcomingEvents.length === 0 && (
+          <p className="mt-4 text-[15px] text-ink2">
+            Nothing scheduled right now. Check back soon.
+          </p>
+        )}
       </section>
 
       {/* CTA */}

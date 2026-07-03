@@ -19,12 +19,15 @@ export function AnswerChecker({
   buttonLabel?: string;
 }) {
   const [value, setValue] = useState("");
-  const [result, setResult] = useState<"ok" | "no" | null>(null);
+  const [result, setResult] = useState<"ok" | "no" | "empty" | null>(null);
 
   function check(e: React.FormEvent) {
     e.preventDefault();
     const v = value.trim();
-    if (!v) return;
+    if (!v) {
+      setResult("empty");
+      return;
+    }
     const num = Number.parseFloat(v);
     const ok = accepted.some(
       (a) => a === v || (!Number.isNaN(num) && Number.parseFloat(a) === num)
@@ -62,9 +65,20 @@ export function AnswerChecker({
         <p
           role="status"
           className="mt-3 text-[14px]"
-          style={{ color: result === "ok" ? "var(--accent2)" : "var(--magenta)" }}
+          style={{
+            color:
+              result === "ok"
+                ? "var(--accent2)"
+                : result === "empty"
+                  ? "rgba(233,236,244,0.7)"
+                  : "var(--magenta)",
+          }}
         >
-          {result === "ok" ? correctMessage : wrongMessage}
+          {result === "ok"
+            ? correctMessage
+            : result === "empty"
+              ? "Type an answer first."
+              : wrongMessage}
         </p>
       )}
     </form>

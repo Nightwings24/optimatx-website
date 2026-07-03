@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { FORM_ENDPOINT, WEB3FORMS_KEY, SITE } from "@/lib/site";
 
@@ -46,6 +46,12 @@ export function FormspreeForm({
   const [status, setStatus] = useState<Status>("idle");
   const [notConnected, setNotConnected] = useState(false);
   const [gotcha, setGotcha] = useState("");
+  const submitting = status === "submitting";
+  const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   const set = (name: string, v: string) => {
     setValues((prev) => ({ ...prev, [name]: v }));
@@ -116,8 +122,12 @@ export function FormspreeForm({
   if (status === "success") {
     return (
       <div
+        ref={successRef}
+        tabIndex={-1}
+        role="status"
+        aria-live="polite"
         className={cn(
-          "rounded-card border-[1.5px] border-line2 bg-surface p-6",
+          "rounded-card border-[1.5px] border-line2 bg-surface p-6 outline-none",
           className
         )}
       >
@@ -174,6 +184,7 @@ export function FormspreeForm({
                 id={id}
                 name={f.name}
                 required={f.required}
+                disabled={submitting}
                 aria-invalid={!!err}
                 aria-describedby={describedBy}
                 value={values[f.name] ?? ""}

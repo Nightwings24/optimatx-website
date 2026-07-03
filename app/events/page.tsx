@@ -29,6 +29,11 @@ export default function EventsPage() {
             <EventCard key={event.id} event={event} />
           ))}
         </div>
+        {upcomingEvents.length === 0 && (
+          <p className="mt-4 text-[15px] text-ink2">
+            Nothing scheduled right now. Check back soon.
+          </p>
+        )}
       </section>
 
       {pastEvents.length > 0 && (

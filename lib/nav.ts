@@ -1,7 +1,7 @@
 // Single source of truth for navigation. Feeds the top nav, the mobile drawer,
 // the ⌘K command palette, AND the sitemap. Add a page here once and it appears
-// everywhere. `status: "planned"` routes render a lightweight "coming soon"
-// page so the nav is never a dead link (the #1 flaw of the old site).
+// everywhere. Every route currently ships a real page; the `status` field is
+// kept for future use (mark a not-yet-built route "planned" + give it a page).
 
 export type RouteStatus = "live" | "planned";
 

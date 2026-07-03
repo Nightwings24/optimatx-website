@@ -119,6 +119,11 @@ export default function AlumniPage() {
             );
           })}
         </div>
+        {alumni.length === 0 && (
+          <p className="mt-4 text-[15px] text-ink2">
+            The wall is just getting started.
+          </p>
+        )}
       </section>
 
       <section className="container-site pb-16">

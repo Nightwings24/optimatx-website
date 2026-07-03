@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { createPortal } from "react-dom";
@@ -41,21 +42,39 @@ export function CommandPaletteProvider({
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { resolvedTheme, setTheme } = useTheme();
+  const triggerRef = useRef<HTMLElement | null>(null);
+  const openRef = useRef(false);
 
   useEffect(() => setMounted(true), []);
+
+  // Capture the trigger before opening (cmdk autofocuses the input, so we can't
+  // read it later) and restore focus to it on close.
+  const openPalette = useCallback(() => {
+    triggerRef.current = document.activeElement as HTMLElement | null;
+    setOpen(true);
+  }, []);
+  const closePalette = useCallback(() => {
+    setOpen(false);
+    triggerRef.current?.focus?.();
+  }, []);
+
+  useEffect(() => {
+    openRef.current = open;
+  }, [open]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setOpen((o) => !o);
+        if (openRef.current) closePalette();
+        else openPalette();
       } else if (e.key === "Escape") {
-        setOpen(false);
+        closePalette();
       }
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, []);
+  }, [openPalette, closePalette]);
 
   useEffect(() => {
     if (!open) return;
@@ -66,13 +85,10 @@ export function CommandPaletteProvider({
     };
   }, [open]);
 
-  const api: PaletteApi = {
-    open: useCallback(() => setOpen(true), []),
-    close: useCallback(() => setOpen(false), []),
-  };
+  const api: PaletteApi = { open: openPalette, close: closePalette };
 
   function run(fn: () => void) {
-    setOpen(false);
+    closePalette();
     fn();
   }
 
@@ -87,12 +103,16 @@ export function CommandPaletteProvider({
             role="dialog"
             aria-modal="true"
             aria-label="Command menu"
+            onKeyDown={(e) => {
+              // the input is the only focusable element - keep Tab inside
+              if (e.key === "Tab") e.preventDefault();
+            }}
           >
             <button
               aria-label="Close command menu"
               tabIndex={-1}
               className="absolute inset-0 cursor-default bg-black/50 backdrop-blur-sm"
-              onClick={() => setOpen(false)}
+              onClick={closePalette}
             />
             <Command
               label="Command menu"

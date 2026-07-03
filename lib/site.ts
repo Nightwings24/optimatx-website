@@ -13,11 +13,20 @@ export interface FooterColumn {
   links: { label: string; href: string; external?: boolean }[];
 }
 
+// Base URL for canonical / OG / sitemap links. Override via NEXT_PUBLIC_SITE_URL
+// for the eventual optimatx.in cutover; defaults to the current GitHub Pages
+// sub-path deploy. At the cutover this becomes "https://optimatx.in" and (with
+// basePath removed) origin === url, so everything collapses correctly.
+const BASE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://nightwings24.github.io/optimatx-website";
+
 export const SITE = {
   name: "OptimatX",
   fullName: "OptimatX - Mathematics Society, IIT Patna",
   short: "OptimatX",
-  url: "https://optimatx.in",
+  url: BASE, // canonical base, includes any sub-path
+  origin: new URL(BASE).origin, // scheme + host only (for metadataBase)
   tagline: "Conjecture, prove, repeat.",
   description:
     "OptimatX is the Mathematics Society of IIT Patna - a home for problems, proofs, talks, and the people who can't stop solving them.",

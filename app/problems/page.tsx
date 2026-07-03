@@ -68,6 +68,11 @@ export default function ProblemsPage() {
             );
           })}
         </div>
+        {pastProblems.length === 0 && (
+          <p className="mt-4 text-[15px] text-ink2">
+            No past problems archived yet.
+          </p>
+        )}
       </section>
 
       <section id="submit" className="container-site scroll-mt-24 pb-20">

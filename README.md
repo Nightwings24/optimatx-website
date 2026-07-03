@@ -60,7 +60,7 @@ Edit [`content/potw.ts`](content/potw.ts): bump `number`, set `formula` (a KaTeX
 1. Copy an existing page, e.g. `app/about/page.tsx`, into `app/<your-route>/page.tsx`.
 2. Register the route in [`lib/nav.ts`](lib/nav.ts). Adding it there wires it into the nav, the mobile drawer, the ⌘K palette, **and** the sitemap in one edit.
 
-Four routes (`/problems`, `/blog`, `/resources`, `/optimization-corner`) currently render a "coming soon" placeholder - replace their `page.tsx` with real content when ready.
+All routes are live pages (there are no "coming soon" placeholders).
 
 ### …connect the forms (Join / Contact)?
 The forms POST to a free form provider. Create a form at [Formspree](https://formspree.io) or [Web3Forms](https://web3forms.com), then set the endpoint as an environment variable (see below). Until it's set, the forms validate and then ask visitors to email instead.

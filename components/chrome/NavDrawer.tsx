@@ -1,27 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { navLinks } from "@/lib/nav";
+import { allRoutes } from "@/lib/nav";
 import { useCommandPalette } from "./CommandPalette";
+import { useFocusTrap } from "./useFocusTrap";
 import { Button } from "@/components/ui/Button";
 import { Kbd } from "@/components/ui/Kbd";
 
-// Mobile navigation drawer (design.md §9) - shown under ~840px. Focus-trapped by
-// nature of the overlay, Esc/backdrop close, background scroll locked.
-const drawerLinks = [
-  ...navLinks,
-  { label: "About", href: "/about", status: "live" as const },
-  { label: "Contact", href: "/contact", status: "live" as const },
-];
+// Mobile navigation drawer (design.md §9) - shown under ~840px. Esc/backdrop
+// close, background scroll locked, focus trapped + restored (see below).
+// Lists every route (Home is the logo, Join is the button) so nothing on the
+// site is unreachable on mobile.
+const drawerLinks = allRoutes.filter(
+  (r) => r.href !== "/" && r.href !== "/join"
+);
 
 export function NavDrawer() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
   const { open: openPalette } = useCommandPalette();
 
   useEffect(() => setMounted(true), []);
+  useFocusTrap(panelRef, open);
 
   useEffect(() => {
     if (!open) return;
@@ -64,7 +67,10 @@ export function NavDrawer() {
             className="absolute inset-0 cursor-default bg-black/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute right-0 top-0 flex h-full w-[min(320px,85vw)] flex-col gap-1 border-l border-line2 bg-surface p-6">
+          <div
+            ref={panelRef}
+            className="absolute right-0 top-0 flex h-full w-[min(320px,85vw)] flex-col gap-1 border-l border-line2 bg-surface p-6"
+          >
             <div className="mb-4 flex items-center justify-between">
               <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink3">
                 Menu
