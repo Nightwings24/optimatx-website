@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { POTWCard } from "@/components/sections/POTWCard";
-import { POTWLeaderboard } from "@/components/islands/POTWLeaderboard";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { FormspreeForm } from "@/components/islands/FormspreeForm";
 import { currentPOTW } from "@/content/potw";
@@ -33,10 +32,10 @@ export default function ProblemsPage() {
       />
 
       <section className="container-site pb-16">
-        <POTWCard potw={currentPOTW} tracked />
+        <POTWCard potw={currentPOTW} />
       </section>
 
-      <POTWLeaderboard />
+      {/* Leaderboard temporarily unplugged - see the note in POTWCard.tsx */}
 
       <section className="container-site pb-16">
         <SectionEyebrow color="lime">Archive</SectionEyebrow>
