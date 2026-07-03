@@ -88,14 +88,26 @@ export function FormspreeForm({
     setStatus("submitting");
     try {
       const payload: Record<string, string> = { ...values };
-      if (subject) payload._subject = subject;
+      if (subject) {
+        payload._subject = subject; // Formspree
+        payload.subject = subject; // Web3Forms
+      }
       if (WEB3FORMS_KEY) payload.access_key = WEB3FORMS_KEY;
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      setStatus(res.ok ? "success" : "error");
+      // Formspree signals success with res.ok; Web3Forms returns a JSON
+      // `success` boolean. Honor the latter when present.
+      let ok = res.ok;
+      try {
+        const json = await res.json();
+        if (json && typeof json.success === "boolean") ok = json.success;
+      } catch {
+        // non-JSON response — fall back to res.ok
+      }
+      setStatus(ok ? "success" : "error");
     } catch {
       setStatus("error");
     }
