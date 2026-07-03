@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "katex/dist/katex.min.css";
+@plugin "@tailwindcss/typography";
 
 /* ------------------------------------------------------------------ *
  * Tailwind v4 theme mapping.
@@ -256,4 +257,72 @@ body {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ------------------------------------------------------------------ *
+ * Blog prose (MDX). Code blocks stay dark in both themes; inline code
+ * uses the accent tint. KaTeX display already styled above.
+ * ------------------------------------------------------------------ */
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  background: #0f1320;
+  color: #e9ecf4;
+  border: 1px solid var(--boxline);
+  border-radius: 12px;
+  font-size: 13.5px;
+}
+.prose :where(code):not(:where(pre *, [class~="not-prose"] *)) {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  padding: 0.15em 0.4em;
+  border-radius: 5px;
+  font-weight: 500;
+}
+/* drop typography's ` ` quotes around inline code */
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+  content: none;
+}
+
+/* highlight.js tokens (rehype-highlight) - dark, on-brand */
+.hljs {
+  color: #e9ecf4;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #697488;
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-literal {
+  color: #fb7185;
+}
+.hljs-string,
+.hljs-attr,
+.hljs-meta .hljs-string {
+  color: #4ed99a;
+}
+.hljs-number,
+.hljs-symbol {
+  color: #f5c04a;
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-section {
+  color: #58a6ff;
+}
+.hljs-type,
+.hljs-class .hljs-title,
+.hljs-params {
+  color: #fb923c;
+}
+.hljs-name,
+.hljs-tag,
+.hljs-variable,
+.hljs-attribute {
+  color: #a5aec2;
+}
+.hljs-meta {
+  color: #697488;
 }

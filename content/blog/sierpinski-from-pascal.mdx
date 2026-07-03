@@ -1,0 +1,47 @@
+---
+title: "How Pascal's Triangle Hides Sierpiński"
+date: "2026-06-27"
+author: "Kabir Nair"
+description: "Colour the odd binomial coefficients and a fractal falls out. Here is why."
+tags: ["number-theory", "fractals"]
+---
+
+Look at the triangle on our home page: every cell with an **odd** value is lit. Do that for enough rows and the [Sierpiński triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle) appears. This is not a coincidence.
+
+## Binomial coefficients mod 2
+
+Each entry of Pascal's triangle is a binomial coefficient,
+
+$$
+\binom{n}{k} = \frac{n!}{k!\,(n-k)!},
+$$
+
+and it satisfies the recurrence
+
+$$
+\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}.
+$$
+
+Whether $\binom{n}{k}$ is odd is governed by **Lucas' theorem**: it is odd exactly when, writing $n$ and $k$ in binary, every bit of $k$ is less than or equal to the corresponding bit of $n$. Equivalently, $\binom{n}{k}$ is odd iff $k \mathbin{\&} n = k$.
+
+That bitwise condition is self-similar - and self-similarity is exactly what produces a fractal.
+
+## In code
+
+A single predicate per cell is enough:
+
+```python
+def is_lit(n, k):
+    # an odd binomial coefficient means k is a "submask" of n
+    return (k & n) == k
+
+for n in range(16):
+    row = "".join("*" if is_lit(n, k) else " " for k in range(n + 1))
+    print(row.center(16))
+```
+
+Run it and the gasket shows up right in your terminal. The same rule drives the interactive triangle on the home page.
+
+## Try it
+
+What happens if you colour the cells divisible by 3 instead of 2? (Hint: Lucas' theorem generalises to any prime, so you should expect a different self-similar pattern.)

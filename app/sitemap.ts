@@ -1,16 +1,33 @@
 import type { MetadataRoute } from "next";
 import { allRoutes } from "@/lib/nav";
 import { SITE } from "@/lib/site";
+import { getAllPosts } from "@/lib/blog";
+import { problems } from "@/content/problems";
 
 export const dynamic = "force-static";
 
-// Static sitemap.xml, generated at build from the single route list.
+// Static sitemap.xml, generated at build from the route list plus the blog
+// posts and problems (so new content is discoverable).
 export default function sitemap(): MetadataRoute.Sitemap {
-  return allRoutes
+  const pages = allRoutes
     .filter((r) => r.sitemap)
     .map((r) => ({
       url: `${SITE.url}${r.href === "/" ? "/" : `${r.href}/`}`,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: r.href === "/" ? 1 : 0.7,
     }));
+
+  const posts = getAllPosts().map((p) => ({
+    url: `${SITE.url}/blog/${p.slug}/`,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const probs = problems.map((p) => ({
+    url: `${SITE.url}/problems/${p.slug}/`,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...pages, ...posts, ...probs];
 }

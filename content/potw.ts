@@ -1,32 +1,33 @@
-// The current Problem of the Week (design.md §6.4).
-// To post a new problem: bump `number`, set `formula` (a KaTeX string), and set
-// `accepted` to the accepted answer(s). The checker compares the trimmed input
-// against `accepted` (numeric-aware).
+// The current Problem of the Week, shaped for the home-page POTW box (§6.4).
+// Sourced from content/problems.ts so there is a single source of truth - edit
+// the problem there, not here.
+
+import { currentProblem } from "./problems";
 
 export interface POTW {
   number: number;
   prompt: string;
-  formula: string; // KaTeX
-  difficulty: string; // "warm-up"
-  deadline: string; // "Fri 23:59"
-  placeholder: string; // input placeholder
-  accepted: string[]; // accepted answer(s)
+  formula: string;
+  difficulty: string;
+  deadline: string;
+  placeholder: string;
+  accepted: string[];
   correctMessage: string;
   wrongMessage: string;
-  submitUrl?: string; // "Submit a full solution" (form)
-  archiveUrl?: string; // "Past problems"
+  submitUrl?: string;
+  archiveUrl?: string;
 }
 
 export const currentPOTW: POTW = {
-  number: 14,
-  prompt: "Evaluate the definite integral:",
-  formula: "\\int_{0}^{\\pi/2}\\sin x\\,dx",
-  difficulty: "warm-up",
-  deadline: "Fri 23:59",
-  placeholder: "e.g. 1",
-  accepted: ["1"],
-  correctMessage: "✓ Correct - the area under one hump of sine is exactly 1.",
-  wrongMessage: "≠ Not quite - antiderivative of sin is −cos. Try again.",
-  submitUrl: "/join",
+  number: currentProblem.number,
+  prompt: currentProblem.prompt,
+  formula: currentProblem.formula ?? "",
+  difficulty: currentProblem.difficulty,
+  deadline: currentProblem.deadline ?? "",
+  placeholder: currentProblem.placeholder ?? "e.g. 1",
+  accepted: currentProblem.accepted,
+  correctMessage: currentProblem.correctMessage,
+  wrongMessage: currentProblem.wrongMessage,
+  submitUrl: "/problems#submit",
   archiveUrl: "/problems",
 };
