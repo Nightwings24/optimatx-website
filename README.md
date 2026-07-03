@@ -86,8 +86,12 @@ Copy `.env.local.example` to `.env.local` and fill in what you need. All are `NE
 | `NEXT_PUBLIC_WEB3FORMS_KEY` | Web3Forms access key (only if using Web3Forms) |
 | `NEXT_PUBLIC_GCAL_SRC` | Embeddable Google Calendar URL for `/events` |
 | `NEXT_PUBLIC_MAP_SRC` | Google Maps embed URL for `/contact` |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL for the POTW leaderboard (see [`supabase/README.md`](supabase/README.md)) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable (anon) key for the POTW leaderboard |
 
-On the host, set the same variables in the project's environment / secrets.
+On the host, set the same variables in the project's environment / secrets. The
+POTW leaderboard is optional - unset, the answer box falls back to an offline
+self-check. Setup steps: [`supabase/README.md`](supabase/README.md).
 
 ---
 

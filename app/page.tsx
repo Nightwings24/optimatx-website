@@ -11,6 +11,9 @@ import { StatBand } from "@/components/sections/StatBand";
 import { POTWCard } from "@/components/sections/POTWCard";
 import { NewsletterSignup } from "@/components/sections/NewsletterSignup";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { Phyllotaxis } from "@/components/islands/Phyllotaxis";
+import { MaurerRose } from "@/components/islands/MaurerRose";
+import { catVar } from "@/lib/categories";
 import { whatsInsideCards } from "@/content/cards";
 import { upcomingEvents } from "@/content/events";
 import { homeStats } from "@/content/stats";
@@ -110,6 +113,63 @@ export default function HomePage() {
             Nothing scheduled right now. Check back soon.
           </p>
         )}
+      </section>
+
+      {/* (3) From the gallery */}
+      <section className="container-site pb-16 md:pb-24">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <SectionEyebrow num="(3)" />
+            <h2 className="mt-2 text-[clamp(1.75rem,3.6vw,2.4rem)] font-extrabold tracking-tight text-ink">
+              From the gallery
+            </h2>
+          </div>
+          <Link
+            href="/gallery"
+            className="whitespace-nowrap font-mono text-[13px] font-bold text-accent hover:underline"
+          >
+            Explore all →
+          </Link>
+        </div>
+        <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink2">
+          Every piece is a few lines of math you can play with. Drag the
+          controls and watch the structure move.
+        </p>
+        <div className="mt-8 grid gap-[18px] lg:grid-cols-2">
+          <div className="rounded-card border-[1.5px] border-line2 bg-surface p-6">
+            <div
+              className="font-mono text-[11px] uppercase tracking-[0.14em]"
+              style={{ color: catVar("lime") }}
+            >
+              Golden angle
+            </div>
+            <h3 className="mt-1 text-[19px] font-bold tracking-tight text-ink">
+              Phyllotaxis
+            </h3>
+            <p className="mb-5 mt-1.5 text-[14px] leading-relaxed text-ink2">
+              Place each seed at angle i·137.5° - the golden angle from φ, the
+              ratio in our logo - and sunflower spirals fall out.
+            </p>
+            <Phyllotaxis />
+          </div>
+
+          <div className="rounded-card border-[1.5px] border-line2 bg-surface p-6">
+            <div
+              className="font-mono text-[11px] uppercase tracking-[0.14em]"
+              style={{ color: catVar("amber") }}
+            >
+              Polar curve
+            </div>
+            <h3 className="mt-1 text-[19px] font-bold tracking-tight text-ink">
+              Maurer rose
+            </h3>
+            <p className="mb-5 mt-1.5 text-[14px] leading-relaxed text-ink2">
+              Walk around the rose r = sin(nθ) in steps of d degrees, connecting
+              the dots. Tiny changes unravel completely different lace.
+            </p>
+            <MaurerRose />
+          </div>
+        </div>
       </section>
 
       {/* Newsletter */}

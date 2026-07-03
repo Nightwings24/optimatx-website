@@ -13,6 +13,7 @@
     "extract:logo": "node scripts/extract-logo.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "gray-matter": "^4.0.3",
