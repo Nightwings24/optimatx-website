@@ -13,8 +13,14 @@ const nextConfig = {
 
   reactStrictMode: true,
 
-  // No basePath / assetPrefix: the site lives at the root of a custom
-  // domain (optimatx.in), so there is no base-path complication.
+  // Served at the GitHub Pages project sub-path
+  // https://nightwings24.github.io/optimatx-website/ for now, so everything
+  // must be prefixed with the repo name.
+  //
+  // WHEN MOVING TO THE optimatx.in ROOT DOMAIN: delete `basePath` below,
+  // restore public/CNAME (containing "optimatx.in"), and set the custom
+  // domain in the repo's Pages settings.
+  basePath: "/optimatx-website",
 };
 
 export default nextConfig;

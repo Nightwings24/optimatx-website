@@ -20,7 +20,7 @@ export interface Route extends NavLink {
 export const navLinks: NavLink[] = [
   { label: "Problems", href: "/problems", status: "live" },
   { label: "Blog", href: "/blog", status: "live" },
-  { label: "Resources", href: "/resources", status: "planned" },
+  { label: "Resources", href: "/resources", status: "live" },
   { label: "Events", href: "/events", status: "live" },
   { label: "Team", href: "/team", status: "live" },
 ];
@@ -35,7 +35,7 @@ export const allRoutes: Route[] = [
   { label: "Contact", href: "/contact", status: "live", sitemap: true },
   { label: "Problems", href: "/problems", status: "live", sitemap: true },
   { label: "Blog", href: "/blog", status: "live", sitemap: true },
-  { label: "Resources", href: "/resources", status: "planned", sitemap: true },
+  { label: "Resources", href: "/resources", status: "live", sitemap: true },
   {
     label: "Optimization Corner",
     href: "/optimization-corner",

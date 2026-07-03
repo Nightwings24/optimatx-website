@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+// Static import (not a "/public" string src) so the URL is basePath-aware -
+// next/image does not prefix basePath onto plain public-folder string srcs.
+import mark from "@/public/assets/optimatx-mark.png";
 
 // The brand lockup: the real emblem (extracted from the reference bundle) in a
 // bordered rounded square + the "OptimatX" wordmark with the X in the accent
@@ -20,7 +23,7 @@ export function Logo({
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <Image
-        src="/assets/optimatx-mark.png"
+        src={mark}
         alt="OptimatX logo"
         width={size}
         height={size}
