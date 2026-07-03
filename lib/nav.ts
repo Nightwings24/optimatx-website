@@ -39,7 +39,7 @@ export const allRoutes: Route[] = [
   {
     label: "Optimization Corner",
     href: "/optimization-corner",
-    status: "planned",
+    status: "live",
     sitemap: true,
   },
 ];
