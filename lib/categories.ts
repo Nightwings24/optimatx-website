@@ -12,8 +12,11 @@ export type CategoryColor =
   | "lime" // gold   - Resources, stats
   | "violet"; // orange - Optimization Corner (signature)
 
-/** CSS `var()` reference for a category color, e.g. catVar("amber") → "var(--amber)". */
-export const catVar = (c: CategoryColor): string => `var(--${c})`;
+/** CSS `var()` reference for a category color, e.g. catVar("amber") → "var(--amber)".
+ *  The green "accent" resolves to its lighter text-safe variant (--accent-ink) so
+ *  category-green text meets AA contrast; solid fills use `bg-accent-fill`. */
+export const catVar = (c: CategoryColor): string =>
+  c === "accent" ? "var(--accent-ink)" : `var(--${c})`;
 
 /** Style object that scopes a local `--cat` to a category - cards read this so
  *  their hover offset shadow and tints all follow the one category color. */

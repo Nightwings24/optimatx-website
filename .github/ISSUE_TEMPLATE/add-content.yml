@@ -1,0 +1,30 @@
+name: Add or update content
+description: Suggest a new event, team member, resource, achievement, or blog post
+title: "[content] "
+labels: ["content"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you adding?
+      options:
+        - Event
+        - Team member
+        - Resource / roadmap
+        - Achievement or alum
+        - Blog post
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: The text, dates, and links. Attach photos or files if relevant.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Which page is this for?
+      placeholder: e.g. /events

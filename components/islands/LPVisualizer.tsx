@@ -104,7 +104,7 @@ export function LPVisualizer({ scenarios }: { scenarios: LPScenario[] }) {
             className={cn(
               "rounded-full px-3 py-1.5 font-mono text-[12px] transition-colors",
               i === idx
-                ? "bg-accent text-white"
+                ? "bg-accent-fill text-white"
                 : "text-ink2 hover:bg-bg2 hover:text-ink"
             )}
           >
@@ -265,7 +265,7 @@ export function LPVisualizer({ scenarios }: { scenarios: LPScenario[] }) {
                     onClick={() => setSense(s)}
                     className={cn(
                       "rounded-full px-2.5 py-0.5 font-mono text-[11px] uppercase transition-colors",
-                      sense === s ? "bg-accent text-white" : "text-ink3 hover:text-ink"
+                      sense === s ? "bg-accent-fill text-white" : "text-ink3 hover:text-ink"
                     )}
                   >
                     {s}

@@ -53,7 +53,7 @@ export function AnswerChecker({
         />
         <button
           type="submit"
-          className="shrink-0 rounded-btn bg-accent px-5 py-2.5 font-bold text-white shadow-[0_8px_22px_color-mix(in_srgb,var(--accent)_32%,transparent)] transition-transform hover:-translate-y-0.5"
+          className="shrink-0 rounded-btn bg-accent-fill px-5 py-2.5 font-bold text-white shadow-[0_8px_22px_color-mix(in_srgb,var(--accent)_32%,transparent)] transition-transform hover:-translate-y-0.5"
         >
           {buttonLabel}
         </button>

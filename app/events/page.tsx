@@ -23,6 +23,7 @@ export default function EventsPage() {
 
       <section className="container-site pb-16">
         <SectionEyebrow color="amber">Upcoming</SectionEyebrow>
+        <h2 className="sr-only">Upcoming events</h2>
         <div className="mt-6 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
           {upcomingEvents.map((event) => (
             <EventCard key={event.id} event={event} />
@@ -33,6 +34,7 @@ export default function EventsPage() {
       {pastEvents.length > 0 && (
         <section className="container-site pb-16">
           <SectionEyebrow color="lime">Past</SectionEyebrow>
+          <h2 className="sr-only">Past events</h2>
           <div className="mt-6 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
             {pastEvents.map((event) => (
               <EventCard key={event.id} event={event} />

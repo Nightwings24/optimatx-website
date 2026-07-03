@@ -37,7 +37,8 @@ export function Logo({
             onBox ? "text-onbox" : "text-ink"
           )}
         >
-          Optimat<span className="text-accent">X</span>
+          Optimat
+          <span className={onBox ? "text-accent-onbox" : "text-accent"}>X</span>
         </span>
       )}
     </span>

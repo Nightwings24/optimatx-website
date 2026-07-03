@@ -30,7 +30,7 @@ export default function ContactPage() {
               <dd className="mt-1">
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="text-accent2 hover:underline"
+                  className="text-accent-onbox hover:underline"
                 >
                   {SITE.email}
                 </a>

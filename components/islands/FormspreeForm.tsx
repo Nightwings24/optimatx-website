@@ -105,7 +105,7 @@ export function FormspreeForm({
         const json = await res.json();
         if (json && typeof json.success === "boolean") ok = json.success;
       } catch {
-        // non-JSON response — fall back to res.ok
+        // non-JSON response - fall back to res.ok
       }
       setStatus(ok ? "success" : "error");
     } catch {
@@ -231,7 +231,7 @@ export function FormspreeForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex items-center justify-center gap-2 rounded-btn bg-accent px-6 py-[13px] font-bold text-white shadow-[0_8px_22px_color-mix(in_srgb,var(--accent)_32%,transparent)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+        className="inline-flex items-center justify-center gap-2 rounded-btn bg-accent-fill px-6 py-[13px] font-bold text-white shadow-[0_8px_22px_color-mix(in_srgb,var(--accent)_32%,transparent)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "submitting" ? "Submitting…" : submitLabel}
       </button>

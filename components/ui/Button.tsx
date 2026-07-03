@@ -10,7 +10,7 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-accent text-white px-6 py-[15px] shadow-[0_8px_22px_color-mix(in_srgb,var(--accent)_32%,transparent)] hover:-translate-y-0.5 hover:shadow-[0_12px_30px_color-mix(in_srgb,var(--accent)_42%,transparent)]",
+    "bg-accent-fill text-white px-6 py-[15px] shadow-[0_8px_22px_color-mix(in_srgb,var(--accent)_32%,transparent)] hover:-translate-y-0.5 hover:shadow-[0_12px_30px_color-mix(in_srgb,var(--accent)_42%,transparent)]",
   ghost:
     "bg-transparent text-ink border-[1.5px] border-line2 px-6 py-[13.5px] hover:border-accent hover:text-accent hover:-translate-y-0.5",
   "cta-secondary":

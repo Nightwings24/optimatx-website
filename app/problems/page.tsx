@@ -37,6 +37,7 @@ export default function ProblemsPage() {
 
       <section className="container-site pb-16">
         <SectionEyebrow color="lime">Archive</SectionEyebrow>
+        <h2 className="sr-only">Problem archive</h2>
         <div className="mt-6 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
           {pastProblems.map((p) => {
             const color = difficultyColor[p.difficulty];

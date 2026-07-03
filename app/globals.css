@@ -25,7 +25,9 @@
   --color-onbox: var(--onbox);
   --color-boxline: var(--boxline);
 
-  --color-accent: var(--accent);
+  --color-accent: var(--accent-ink); /* green as TEXT (AA on surfaces) */
+  --color-accent-fill: var(--accent); /* green as a FILL (carries white text) */
+  --color-accent-onbox: var(--accent-onbox); /* green text on the always-dark boxes */
   --color-accent2: var(--accent2);
   --color-magenta: var(--magenta);
   --color-amber: var(--amber);
@@ -61,7 +63,7 @@
 
   --ink: #e9ecf4;
   --ink2: #a5aec2;
-  --ink3: #697488;
+  --ink3: #7c8698; /* lightened for AA contrast on surfaces (was #697488) */
 
   --line: #1e2430;
   --line2: #2b3444;
@@ -71,6 +73,8 @@
   --glowB: rgba(66, 86, 170, 0.16);
 
   --accent: #00884b;
+  --accent-ink: #17a862; /* lighter green for small text on the dark surfaces + tints */
+  --accent-onbox: #4ed99a; /* mint: green text on the always-dark boxes */
   --accent2: #4ed99a;
   --magenta: #fb7185;
   --amber: #58a6ff;
@@ -92,7 +96,7 @@
 
   --ink: #1a1f2e;
   --ink2: #4a5168;
-  --ink3: #828aa1;
+  --ink3: #5f6879; /* darkened for AA contrast on white + bg2 (was #828aa1) */
 
   --line: #e6eaf3;
   --line2: #cdd4e4;
@@ -102,6 +106,8 @@
   --glowB: transparent;
 
   --accent: #00884b;
+  --accent-ink: #0b6e45; /* green text on white (already AA); kept for parity */
+  --accent-onbox: #4ed99a; /* mint: green text on the always-dark boxes */
   --accent2: #0b6e45;
   --magenta: #d83a5a;
   --amber: #1e7fc4;

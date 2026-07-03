@@ -52,7 +52,7 @@ export function POTWCard({ potw }: { potw: POTW }) {
             {potw.submitUrl && (
               <Link
                 href={potw.submitUrl}
-                className="font-mono text-accent2 hover:underline"
+                className="font-mono text-accent-onbox hover:underline"
               >
                 Submit a full solution →
               </Link>
