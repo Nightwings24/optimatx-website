@@ -1,0 +1,36 @@
+{
+  "name": "optimatx-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OptimatX - Mathematics Society of IIT Patna. Website.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "preview": "npx serve out",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "extract:logo": "node scripts/extract-logo.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "next-themes": "^0.4.6",
+    "katex": "^0.16.11",
+    "cmdk": "^1.1.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/katex": "^0.16.7",
+    "tailwindcss": "^4.1.13",
+    "@tailwindcss/postcss": "^4.1.13",
+    "postcss": "^8.5.6"
+  }
+}
