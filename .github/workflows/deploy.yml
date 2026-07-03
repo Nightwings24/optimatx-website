@@ -32,8 +32,9 @@ jobs:
           NEXT_PUBLIC_GCAL_SRC: ${{ secrets.NEXT_PUBLIC_GCAL_SRC }}
           NEXT_PUBLIC_MAP_SRC: ${{ secrets.NEXT_PUBLIC_MAP_SRC }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          # Accept the key under either secret name; whichever is set becomes the
+          # real value the app reads (see lib/supabase.ts).
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       - name: Disable Jekyll
         run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3

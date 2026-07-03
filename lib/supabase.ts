@@ -9,9 +9,11 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 // leaderboard degrades gracefully to the offline self-checker.
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 // Newer Supabase dashboards call this the "publishable" key; older ones the
-// "anon" key. Accept either name so the env matches whatever your dashboard shows.
+// "anon" key. Accept either name so the env matches whatever your dashboard
+// shows. `||` (not `??`) so an empty-string var - what an unset GitHub Actions
+// secret expands to - falls through to the other name instead of winning.
 const key =
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export const SUPABASE_ENABLED = Boolean(url && key);
