@@ -26,7 +26,7 @@ export default function TeamPage() {
       <PageHeader
         eyebrow="The people"
         title="The people behind the proofs."
-        lead="A rotating cast of students who run the problems, the events, and the writing - with a faculty advisor keeping us honest. (This roster is placeholder data; swap in the real team in content/team.ts.)"
+        lead="A rotating cast of students who run the problems, the events, and the design - with a faculty advisor keeping us honest."
       />
 
       <section className="container-site pb-14">
@@ -37,7 +37,7 @@ export default function TeamPage() {
       </section>
 
       <section className="container-site pb-14">
-        <GroupHeading label="Coordinators" />
+        <GroupHeading label="Overall Coordinator" />
         <div className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
           {coordinators.map((m) => (
             <PersonCard key={m.id} member={m} />

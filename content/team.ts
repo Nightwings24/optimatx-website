@@ -1,7 +1,7 @@
 // The team roster (design.md §6.3 person cards; build list "Team / Our People").
-// PLACEHOLDER ROSTER - replace names, roles, years, quotes and photos with the
-// real team. Drop square headshots in public/assets/team/<id>.jpg; if a photo
-// is missing the card falls back to an initials monogram, so nothing breaks.
+// Drop square headshots in public/assets/team/<id>.jpg; if a photo is missing
+// the card falls back to an initials monogram, so nothing breaks. Add socials
+// (github/linkedin/instagram/email) per member as they share them.
 
 import type { CategoryColor } from "@/lib/categories";
 
@@ -16,7 +16,7 @@ export interface Member {
   id: string;
   name: string;
   role: string;
-  year: string; // "3rd year · Mathematics & Computing"
+  year: string; // sub-line under the role, e.g. department or programme
   group: TeamGroup;
   quote: string; // one mathematical quote per member
   photo?: string; // /assets/team/<id>.jpg - optional
@@ -26,105 +26,132 @@ export interface Member {
 
 export const facultyAdvisor: Member = {
   id: "advisor",
-  name: "Prof. A. N. Placeholder",
-  role: "Faculty Advisor",
+  name: "Dr. Prashant Kumar Srivastava",
+  role: "Faculty Advisor & POC",
   year: "Department of Mathematics",
   group: "faculty",
-  quote:
-    "Mathematics is the art of giving the same name to different things. - Henri Poincaré",
-  socials: [{ platform: "email", url: "mailto:hello@optimatx.in" }],
+  quote: "Mathematics is the queen of the sciences. - Carl Friedrich Gauss",
+  socials: [],
   color: "accent2",
 };
 
 export const members: Member[] = [
+  // ---- Overall Coordinator ----
   {
-    id: "aarav",
-    name: "Aarav Sharma",
-    role: "Coordinator",
-    year: "3rd year · Mathematics & Computing",
+    id: "anish",
+    name: "Anish Kumar",
+    role: "Overall Coordinator",
+    year: "IIT Patna",
     group: "coordinator",
-    quote: "Pure mathematics is the poetry of logical ideas. - Einstein",
-    socials: [
-      { platform: "github", url: "https://github.com/" },
-      { platform: "linkedin", url: "https://linkedin.com/" },
-    ],
+    quote: "Pure mathematics is, in its way, the poetry of logical ideas. - Einstein",
+    socials: [],
     color: "accent",
   },
+
+  // ---- Design & PR ----
   {
-    id: "diya",
-    name: "Diya Verma",
-    role: "Deputy Coordinator",
-    year: "3rd year · Mathematics & Computing",
-    group: "coordinator",
-    quote: "It is not knowledge, but the act of learning… that grants joy. - Gauss",
-    socials: [
-      { platform: "instagram", url: "https://instagram.com/" },
-      { platform: "linkedin", url: "https://linkedin.com/" },
-    ],
+    id: "baibhaw",
+    name: "Baibhaw Kumar",
+    role: "Design & PR",
+    year: "2nd year · Computer Science & Engineering",
+    group: "core",
+    quote: "Beauty is the first test: there is no permanent place for ugly mathematics. - Hardy",
+    socials: [],
     color: "magenta",
   },
   {
-    id: "kabir",
-    name: "Kabir Nair",
-    role: "Problems Head",
-    year: "3rd year · Mathematics & Computing",
+    id: "maanya",
+    name: "Maanya Agrawal",
+    role: "Design & PR",
+    year: "2nd year · Chemical Science & Technology",
     group: "core",
-    quote: "A problem worthy of attack proves its worth by fighting back. - Piet Hein",
-    socials: [{ platform: "github", url: "https://github.com/" }],
-    color: "amber",
-  },
-  {
-    id: "rohan",
-    name: "Rohan Iyer",
-    role: "Events Head",
-    year: "2nd year · AI & Data Science",
-    group: "core",
-    quote: "In mathematics you don't understand things, you get used to them. - von Neumann",
-    socials: [{ platform: "instagram", url: "https://instagram.com/" }],
-    color: "lime",
-  },
-  {
-    id: "sara",
-    name: "Sara Khan",
-    role: "Content Head",
-    year: "2nd year · Mathematics & Computing",
-    group: "core",
-    quote: "The only way to learn mathematics is to do mathematics. - Halmos",
-    socials: [
-      { platform: "github", url: "https://github.com/" },
-      { platform: "website", url: "https://example.com/" },
-    ],
+    quote: "Mathematics is the art of giving the same name to different things. - Poincaré",
+    socials: [],
     color: "violet",
   },
   {
-    id: "ananya",
-    name: "Ananya Rao",
-    role: "Design & Web",
-    year: "2nd year · Electronics & Comm.",
+    id: "goutham",
+    name: "Goutham Pendyala",
+    role: "Design & PR",
+    year: "2nd year · Artificial Intelligence & Data Science",
     group: "core",
-    quote: "Beauty is the first test: there is no permanent place for ugly mathematics. - Hardy",
-    socials: [{ platform: "github", url: "https://github.com/" }],
+    quote: "Geometry is the art of correct reasoning from incorrectly drawn figures. - Pólya",
+    socials: [],
+    color: "amber",
+  },
+
+  // ---- Problem Setting ----
+  {
+    id: "prabhudutta",
+    name: "Prabhudutta Prusti",
+    role: "Problem Setting",
+    year: "2nd year · Mathematics & Computing",
+    group: "core",
+    quote: "A problem worthy of attack proves its worth by fighting back. - Piet Hein",
+    socials: [],
     color: "accent",
   },
   {
-    id: "vikram",
-    name: "Vikram Singh",
-    role: "Outreach",
-    year: "2nd year · Mathematics & Computing",
+    id: "adarsh",
+    name: "Adarsh Choudhary",
+    role: "Problem Setting",
+    year: "2nd year · Chemical & Biotechnology",
     group: "core",
-    quote: "Do not worry about your difficulties in mathematics… mine are greater. - Einstein",
-    socials: [{ platform: "instagram", url: "https://instagram.com/" }],
-    color: "amber",
+    quote: "The only way to learn mathematics is to do mathematics. - Halmos",
+    socials: [],
+    color: "lime",
   },
   {
-    id: "meera",
-    name: "Meera Joshi",
-    role: "Treasurer",
-    year: "3rd year · Mathematics & Computing",
+    id: "anvesh",
+    name: "Anvesh Shekhar",
+    role: "Problem Setting",
+    year: "2nd year · Electronics & Communication Engineering",
+    group: "core",
+    quote: "In mathematics you don't understand things. You just get used to them. - von Neumann",
+    socials: [],
+    color: "magenta",
+  },
+  {
+    id: "aradhya",
+    name: "Aradhya",
+    role: "Problem Setting",
+    year: "2nd year · Civil Engineering",
     group: "core",
     quote: "God made the integers; all else is the work of man. - Kronecker",
-    socials: [{ platform: "linkedin", url: "https://linkedin.com/" }],
-    color: "magenta",
+    socials: [],
+    color: "amber",
+  },
+
+  // ---- Events & Logistics ----
+  {
+    id: "ayush",
+    name: "Ayush Pathak",
+    role: "Events & Logistics",
+    year: "2nd year · Civil Engineering",
+    group: "core",
+    quote: "It is not knowledge, but the act of learning, that grants the greatest enjoyment. - Gauss",
+    socials: [],
+    color: "violet",
+  },
+  {
+    id: "onik",
+    name: "Onik Chouhan",
+    role: "Events & Logistics",
+    year: "2nd year · Mathematics & Computing",
+    group: "core",
+    quote: "Mathematics knows no races or geographic boundaries. - Hilbert",
+    socials: [],
+    color: "accent",
+  },
+  {
+    id: "yashvardhan",
+    name: "Yashvardhan Shaktawat",
+    role: "Events & Logistics",
+    year: "2nd year · Economics",
+    group: "core",
+    quote: "Obvious is the most dangerous word in mathematics. - E. T. Bell",
+    socials: [],
+    color: "lime",
   },
 ];
 
