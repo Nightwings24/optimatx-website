@@ -43,6 +43,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Blog", href: "/blog" },
       { label: "Resources", href: "/resources" },
       { label: "Optimization Corner", href: "/optimization-corner" },
+      { label: "Gallery", href: "/gallery" },
     ],
   },
   {

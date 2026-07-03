@@ -42,6 +42,7 @@ export const allRoutes: Route[] = [
     status: "live",
     sitemap: true,
   },
+  { label: "Gallery", href: "/gallery", status: "live", sitemap: true },
 ];
 
 // -------------------------------------------------------------------------
@@ -106,6 +107,14 @@ export const paletteCommands: CommandItem[] = [
     type: "route",
     href: "/team",
     keywords: ["people", "members", "council"],
+  },
+  {
+    id: "gallery",
+    glyph: "✦",
+    label: "Gallery",
+    type: "route",
+    href: "/gallery",
+    keywords: ["art", "fractal", "julia", "visual", "generative"],
   },
   {
     id: "join",
