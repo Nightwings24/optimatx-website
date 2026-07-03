@@ -43,6 +43,8 @@ export const allRoutes: Route[] = [
     sitemap: true,
   },
   { label: "Gallery", href: "/gallery", status: "live", sitemap: true },
+  { label: "Alumni", href: "/alumni", status: "live", sitemap: true },
+  { label: "FAQ", href: "/faq", status: "live", sitemap: true },
 ];
 
 // -------------------------------------------------------------------------
@@ -115,6 +117,22 @@ export const paletteCommands: CommandItem[] = [
     type: "route",
     href: "/gallery",
     keywords: ["art", "fractal", "julia", "visual", "generative"],
+  },
+  {
+    id: "alumni",
+    glyph: "★",
+    label: "Alumni & Achievements",
+    type: "route",
+    href: "/alumni",
+    keywords: ["alumni", "placements", "achievements", "results", "where"],
+  },
+  {
+    id: "faq",
+    glyph: "?",
+    label: "FAQ",
+    type: "route",
+    href: "/faq",
+    keywords: ["questions", "help", "freshers", "how"],
   },
   {
     id: "join",
