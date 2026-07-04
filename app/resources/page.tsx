@@ -7,6 +7,7 @@ import { CurriculumMap } from "@/components/sections/CurriculumMap";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { catStyle, catVar } from "@/lib/categories";
 import { roadmaps, resourceGroups, courses, type RoadmapStep } from "@/content/resources";
+import { notesForCourse } from "@/lib/notes";
 
 export const metadata: Metadata = {
   title: "Resources & Roadmaps",
@@ -169,18 +170,36 @@ export default function ResourcesPage() {
           and add yours.
         </p>
         <div className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
-          {courses.map((c) => (
-            <div
-              key={c.name}
-              className="rounded-card border-[1.5px] border-line2 bg-surface p-5"
-            >
-              <h3 className="text-[16px] font-bold text-ink">{c.name}</h3>
-              <p className="mt-1 text-[13px] text-ink2">{c.note}</p>
-              <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink3">
-                Notes coming soon
-              </p>
-            </div>
-          ))}
+          {courses.map((c) => {
+            const notes = notesForCourse(c.name);
+            return (
+              <div
+                key={c.name}
+                className="rounded-card border-[1.5px] border-line2 bg-surface p-5"
+              >
+                <h3 className="text-[16px] font-bold text-ink">{c.name}</h3>
+                <p className="mt-1 text-[13px] text-ink2">{c.note}</p>
+                {notes.length === 0 ? (
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink3">
+                    Notes coming soon
+                  </p>
+                ) : (
+                  <ul className="mt-3 space-y-1.5">
+                    {notes.map((n) => (
+                      <li key={n.slug}>
+                        <Link
+                          href={`/resources/notes/${n.slug}`}
+                          className="text-[14px] font-medium text-accent hover:underline"
+                        >
+                          {n.title} →
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 

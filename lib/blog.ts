@@ -52,14 +52,6 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1)); // newest first
 }
 
-/** "June 15, 2026" from an ISO date, build-time safe (no locale surprises). */
-export function formatDate(iso: string): string {
-  if (!iso) return "";
-  const [y, m, d] = iso.split("-").map(Number);
-  const months = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December",
-  ];
-  if (!y || !m || !d) return iso;
-  return `${months[m - 1]} ${d}, ${y}`;
-}
+// Re-exported for the server pages that already import it from here; the
+// implementation lives in lib/dates.ts so client islands can use it too.
+export { formatDate } from "./dates";

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { catStyle, catVar } from "@/lib/categories";
+import { asset } from "@/lib/assets";
 import { GlyphWatermark } from "@/components/ui/GlyphWatermark";
 import type { Member } from "@/content/team";
 
@@ -34,7 +35,7 @@ export function PersonCard({ member }: { member: Member }) {
       <div className="relative flex items-center gap-4">
         {member.photo ? (
           <Image
-            src={member.photo}
+            src={asset(member.photo)}
             alt={member.name}
             width={56}
             height={56}

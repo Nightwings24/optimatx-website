@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { allRoutes } from "@/lib/nav";
 import { SITE } from "@/lib/site";
 import { getAllPosts } from "@/lib/blog";
+import { getAllNotes } from "@/lib/notes";
+import { getAllIssues } from "@/lib/newsletter";
 import { problems } from "@/content/problems";
 import { events } from "@/content/events";
 
@@ -36,5 +38,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...pages, ...posts, ...probs, ...evs];
+  const notes = getAllNotes().map((n) => ({
+    url: `${SITE.url}/resources/notes/${n.slug}/`,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const issues = getAllIssues().map((i) => ({
+    url: `${SITE.url}/publications/${i.slug}/`,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
+
+  return [...pages, ...posts, ...probs, ...evs, ...notes, ...issues];
 }

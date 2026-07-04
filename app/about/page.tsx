@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { HighlightCard } from "@/components/sections/HighlightCard";
 import { StatBand } from "@/components/sections/StatBand";
@@ -63,6 +64,42 @@ export default function AboutPage() {
               OptimatX is a society under the {SITE.council}. We work alongside
               the other technical clubs on campus and welcome collaborations -
               from cryptography talks to quant-finance puzzle nights.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-[22px] font-bold tracking-tight text-ink">
+              Study &amp; reading groups
+            </h2>
+            <p className="mt-3 text-[16px] leading-relaxed text-ink2">
+              Alongside the weekly{" "}
+              <Link href="/events/srmc-prep" className="text-accent hover:underline">
+                SRMC Prep Circle
+              </Link>
+              , we run semester-long reading groups: a small circle picks one
+              text - an analysis book, a paper, a problem collection - and meets
+              weekly to work through it out loud. Groups form at the start of
+              each semester; to propose or join one, raise it on the{" "}
+              <Link href="/discuss" className="text-accent hover:underline">
+                discussion board
+              </Link>{" "}
+              or mention it when you join.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-[22px] font-bold tracking-tight text-ink">
+              Collaborations
+            </h2>
+            <p className="mt-3 text-[16px] leading-relaxed text-ink2">
+              We co-host events with other clubs and institutes - joint guest
+              lectures, crypto-night crossovers, and inter-college contests. If
+              you run a club (here or at another campus) and want to build
+              something together,{" "}
+              <Link href="/contact" className="text-accent hover:underline">
+                write to us
+              </Link>
+              .
             </p>
           </div>
         </div>

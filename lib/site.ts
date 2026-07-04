@@ -53,6 +53,9 @@ export const footerColumns: FooterColumn[] = [
       { label: "Resources", href: "/resources" },
       { label: "Optimization Corner", href: "/optimization-corner" },
       { label: "Gallery", href: "/gallery" },
+      { label: "Media", href: "/media" },
+      { label: "Publications", href: "/publications" },
+      { label: "Discuss", href: "/discuss" },
     ],
   },
   {
@@ -63,6 +66,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Alumni", href: "/alumni" },
       { label: "Events", href: "/events" },
       { label: "Competitions", href: "/competitions" },
+      { label: "Merch", href: "/merch" },
       { label: "Join", href: "/join" },
       { label: "FAQ", href: "/faq" },
     ],

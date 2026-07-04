@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { DarkFeatureBox } from "@/components/sections/DarkFeatureBox";
 import { Katex } from "@/components/ui/Katex";
 import { AnswerChecker } from "@/components/islands/AnswerChecker";
+import { Giscus } from "@/components/islands/Giscus";
 import { problems, getProblem } from "@/content/problems";
 
 export function generateStaticParams() {
@@ -91,6 +92,18 @@ export default async function ProblemPage({
           )}
         </div>
       </details>
+
+      <section className="mt-14 border-t border-line pt-10">
+        <h2 className="mb-2 text-xl font-bold tracking-tight text-ink">
+          Discussion
+        </h2>
+        <p className="mb-6 text-[13.5px] text-ink3">
+          {p.status === "open"
+            ? "Hints and approaches welcome - keep full solutions out until the problem closes."
+            : "Alternative solutions and generalizations welcome."}
+        </p>
+        <Giscus term={`problem/${p.slug}`} />
+      </section>
     </article>
   );
 }

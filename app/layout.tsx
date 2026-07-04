@@ -10,6 +10,8 @@ import { Footer } from "@/components/chrome/Footer";
 import { SITE } from "@/lib/site";
 import type { CommandItem } from "@/lib/nav";
 import { getAllPosts } from "@/lib/blog";
+import { getAllNotes } from "@/lib/notes";
+import { getAllIssues } from "@/lib/newsletter";
 import { problems } from "@/content/problems";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -90,6 +92,22 @@ const contentCommands: CommandItem[] = [
     type: "route" as const,
     href: `/blog/${p.slug}`,
     keywords: ["blog", "article", ...p.tags, fold(p.title)],
+  })),
+  ...getAllNotes().map((n) => ({
+    id: `note-${n.slug}`,
+    glyph: "Σ",
+    label: `${n.title} · ${n.course} notes`,
+    type: "route" as const,
+    href: `/resources/notes/${n.slug}`,
+    keywords: ["notes", "course", fold(n.course), fold(n.title)],
+  })),
+  ...getAllIssues().map((i) => ({
+    id: `issue-${i.slug}`,
+    glyph: "✉",
+    label: i.title,
+    type: "route" as const,
+    href: `/publications/${i.slug}`,
+    keywords: ["newsletter", "dispatch", "issue", fold(i.title)],
   })),
 ];
 

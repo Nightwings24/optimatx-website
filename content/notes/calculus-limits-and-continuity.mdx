@@ -1,0 +1,84 @@
+---
+title: "Limits & Continuity - a working summary"
+course: "Calculus"
+author: "OptimatX"
+date: "2026-07-04"
+description: "The epsilon-delta definition, the limit laws you actually use, and the three classic ways continuity fails."
+---
+
+These are the definitions and results you need cold before anything else in
+analysis makes sense. Keep this open next to your problem set.
+
+## The definition
+
+We say $\lim_{x \to a} f(x) = L$ when $f(x)$ can be forced as close to $L$ as
+we like by taking $x$ close enough to $a$:
+
+$$
+\forall \varepsilon > 0 \;\; \exists \delta > 0 : \quad
+0 < |x - a| < \delta \implies |f(x) - L| < \varepsilon
+$$
+
+Two things students miss on first reading:
+
+- The $0 <$ in $0 < |x - a|$ means the value $f(a)$ itself is **irrelevant** -
+  a limit is about the approach, not the arrival.
+- The order of quantifiers matters: $\varepsilon$ is the adversary's challenge,
+  $\delta$ is your answer. Your $\delta$ may depend on $\varepsilon$; never the
+  other way around.
+
+## A worked epsilon-delta proof
+
+**Claim.** $\lim_{x \to 3} (2x + 1) = 7$.
+
+**Proof.** Let $\varepsilon > 0$. Choose $\delta = \varepsilon / 2$. If
+$0 < |x - 3| < \delta$, then
+
+$$
+|(2x + 1) - 7| = |2x - 6| = 2\,|x - 3| < 2\delta = \varepsilon.
+$$
+
+That's the whole game: work backwards from $|f(x) - L| < \varepsilon$ until you
+can read off a sufficient $\delta$.
+
+## The limit laws
+
+Once a few basic limits exist, arithmetic gives you the rest. If
+$\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$:
+
+| Law | Statement |
+| --- | --- |
+| Sum | $\lim\,(f + g) = L + M$ |
+| Product | $\lim\,(fg) = LM$ |
+| Quotient | $\lim\,(f/g) = L/M$, provided $M \neq 0$ |
+| Squeeze | if $f \le h \le g$ near $a$ and $L = M$, then $\lim h = L$ |
+
+The squeeze theorem is the one that earns its keep - it's how you prove the
+famous $\lim_{x \to 0} \frac{\sin x}{x} = 1$.
+
+## Continuity, and the three ways it fails
+
+$f$ is **continuous at $a$** when $\lim_{x \to a} f(x) = f(a)$ - the limit
+exists, the value exists, and they agree. Each ingredient can fail on its own:
+
+1. **Removable** - the limit exists but disagrees with (or lacks) a value:
+   $f(x) = \frac{x^2 - 1}{x - 1}$ at $x = 1$. Patchable by redefining one point.
+2. **Jump** - one-sided limits exist but differ: the step function at $0$.
+3. **Essential** - a one-sided limit doesn't exist at all:
+   $f(x) = \sin(1/x)$ at $0$, which oscillates forever.
+
+## The two theorems that do the heavy lifting
+
+For $f$ continuous on a closed interval $[a, b]$:
+
+- **Intermediate Value Theorem.** $f$ attains every value between $f(a)$ and
+  $f(b)$. This is how you prove equations have roots without solving them.
+- **Extreme Value Theorem.** $f$ attains a maximum and a minimum on $[a, b]$.
+  Both the "closed" and the "bounded" in $[a, b]$ are load-bearing - drop
+  either and the theorem dies (try $f(x) = 1/x$ on $(0, 1]$).
+
+## Check yourself
+
+Prove from the definition that $\lim_{x \to 2} x^2 = 4$. Hint: factor
+$|x^2 - 4| = |x - 2||x + 2|$ and first insist $\delta \le 1$ so that
+$|x + 2| < 5$.
