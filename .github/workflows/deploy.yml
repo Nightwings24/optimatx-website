@@ -35,6 +35,7 @@ jobs:
           # Accept the key under either secret name; whichever is set becomes the
           # real value the app reads (see lib/supabase.ts).
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_GOATCOUNTER_CODE: ${{ secrets.NEXT_PUBLIC_GOATCOUNTER_CODE }}
       - name: Disable Jekyll
         run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3

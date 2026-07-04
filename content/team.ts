@@ -41,7 +41,7 @@ export const members: Member[] = [
     id: "anish",
     name: "Anish Kumar",
     role: "Overall Coordinator",
-    year: "IIT Patna",
+    year: "3rd year · Mathematics & Computing",
     group: "coordinator",
     quote: "Pure mathematics is, in its way, the poetry of logical ideas. - Einstein",
     socials: [],

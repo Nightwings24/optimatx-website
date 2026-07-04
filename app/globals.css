@@ -109,10 +109,12 @@
   --accent-ink: #0b6e45; /* green text on white (already AA); kept for parity */
   --accent-onbox: #4ed99a; /* mint: green text on the always-dark boxes */
   --accent2: #0b6e45;
-  --magenta: #d83a5a;
-  --amber: #1e7fc4;
-  --lime: #b07a0b;
-  --violet: #6e5ae0;
+  /* category colors darkened for AA (4.5:1+) as small text on white AND on
+   * their own 14% chip tints - hues preserved from the original palette */
+  --magenta: #b1304a;
+  --amber: #18669d;
+  --lime: #825a08;
+  --violet: #614fc5;
 
   --box: #161a30;
   --onbox: #eef1f8;

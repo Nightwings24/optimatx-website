@@ -1,6 +1,5 @@
 // Single source of truth for site-wide constants: identity, contact, socials,
-// and the footer link columns. Non-coders can edit the placeholders here.
-// PLACEHOLDER values are marked - swap them for the club's real details.
+// and the footer link columns. Non-coders can edit these safely.
 
 export interface SocialLink {
   platform: "instagram" | "github" | "email" | "linkedin";
@@ -30,17 +29,27 @@ export const SITE = {
   tagline: "Conjecture, prove, repeat.",
   description:
     "OptimatX is the Mathematics Society of IIT Patna - a home for problems, proofs, talks, and the people who can't stop solving them.",
-  // PLACEHOLDER - replace with the club's real inbox.
-  email: "hello@optimatx.in",
-  // PLACEHOLDER - replace with the campus address.
+  email: "optimatx@iitp.ac.in",
   location: "IIT Patna · Bihta, Patna 801106, Bihar, India",
   council: "Science & Technology Council, IIT Patna",
 } as const;
 
-// PLACEHOLDER hrefs - point these at the club's real profiles.
 export const socials: SocialLink[] = [
-  { platform: "instagram", label: "Instagram", href: "https://instagram.com/" },
-  { platform: "github", label: "GitHub", href: "https://github.com/" },
+  {
+    platform: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/optimatx.iitp/",
+  },
+  {
+    platform: "linkedin",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/optimatx-iit-patna/",
+  },
+  {
+    platform: "github",
+    label: "GitHub",
+    href: "https://github.com/Nightwings24/optimatx-website",
+  },
   { platform: "email", label: "Email", href: `mailto:${SITE.email}` },
 ];
 
@@ -73,11 +82,8 @@ export const footerColumns: FooterColumn[] = [
   },
   {
     heading: "Connect",
-    links: [
-      { label: "Instagram", href: socials[0].href, external: true },
-      { label: "GitHub", href: socials[1].href, external: true },
-      { label: "Email", href: `mailto:${SITE.email}`, external: true },
-    ],
+    // derived from `socials` above - edit there, not here
+    links: socials.map((s) => ({ label: s.label, href: s.href, external: true })),
   },
 ];
 

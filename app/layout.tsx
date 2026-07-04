@@ -7,6 +7,7 @@ import { AmbientGlow } from "@/components/chrome/AmbientGlow";
 import { SkipLink } from "@/components/chrome/SkipLink";
 import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
+import { Analytics } from "@/components/islands/Analytics";
 import { SITE } from "@/lib/site";
 import type { CommandItem } from "@/lib/nav";
 import { getAllPosts } from "@/lib/blog";
@@ -130,6 +131,7 @@ export default function RootLayout({
             <Nav />
             <main id="main">{children}</main>
             <Footer />
+            <Analytics />
           </CommandPaletteProvider>
         </ThemeProvider>
       </body>
