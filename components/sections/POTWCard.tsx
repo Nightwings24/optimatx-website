@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { DarkFeatureBox } from "./DarkFeatureBox";
 import { Katex } from "@/components/ui/Katex";
-import { AnswerChecker } from "@/components/islands/AnswerChecker";
+import { POTWAnswer } from "@/components/islands/POTWAnswer";
 import type { POTW } from "@/content/potw";
 
 // Problem of the Week feature box (design.md §6.4). Keeps a resting rose offset
@@ -14,12 +14,10 @@ function MetaChip({ children }: { children: React.ReactNode }) {
   );
 }
 
-// TEMPORARILY back on the offline self-checker: the Supabase-backed POTWAnswer
-// island (leaderboard submissions) made GitHub Pages reject the deployment, so
-// it's unplugged from the bundle until that's resolved. The island + lib are
-// still in the repo - to re-enable, swap AnswerChecker back for POTWAnswer
-// (with a `tracked` prop) and restore the leaderboard on /problems.
-export function POTWCard({ potw }: { potw: POTW }) {
+// `tracked` turns on the leaderboard-connected submission (name + roll, checked
+// server-side via Supabase) - used on /problems. Left off (e.g. the home
+// teaser) it stays a simple offline self-check.
+export function POTWCard({ potw, tracked }: { potw: POTW; tracked?: boolean }) {
   return (
     <DarkFeatureBox glyph="∫" className="shadow-[8px_8px_0_var(--magenta)]">
       <div className="grid gap-8 md:grid-cols-2 md:gap-10">
@@ -47,7 +45,8 @@ export function POTWCard({ potw }: { potw: POTW }) {
         </div>
 
         <div className="flex flex-col justify-center">
-          <AnswerChecker
+          <POTWAnswer
+            problemId={tracked ? String(potw.number) : undefined}
             accepted={potw.accepted}
             placeholder={potw.placeholder}
             correctMessage={potw.correctMessage}
