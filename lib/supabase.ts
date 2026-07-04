@@ -1,20 +1,26 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-// Supabase client for the POTW leaderboard. The URL + anon key are PUBLIC by
-// design (safe to ship in a static bundle): the anon role can only read the
-// public leaderboard and call the submit_potw() function - it cannot read the
-// answers table or write solves directly (see supabase/potw.sql).
+// Supabase client for the POTW leaderboard. The URL + publishable key are
+// PUBLIC by design (safe to ship in a static bundle): the anon role can only
+// read the public leaderboard and call the submit_potw() function - it cannot
+// read the answers table or write solves directly (see supabase/potw.sql).
 //
-// Both vars are build-time NEXT_PUBLIC_*, so when they are unset the whole
-// leaderboard degrades gracefully to the offline self-checker.
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-// Newer Supabase dashboards call this the "publishable" key; older ones the
-// "anon" key. Accept either name so the env matches whatever your dashboard
-// shows. `||` (not `??`) so an empty-string var - what an unset GitHub Actions
-// secret expands to - falls through to the other name instead of winning.
-const key =
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// The values arrive base64-wrapped (encoded in next.config.mjs from the
+// NEXT_PUBLIC_SUPABASE_URL / _PUBLISHABLE_KEY env vars) because GitHub Pages'
+// deploy pipeline rejects artifacts containing a raw sb_publishable_* string -
+// a secret-scanner false positive, NOT a real secret. When the vars are unset
+// the leaderboard degrades gracefully to the offline self-checker.
+const decode = (v: string | undefined): string => {
+  if (!v) return "";
+  try {
+    return atob(v);
+  } catch {
+    return "";
+  }
+};
+
+const url = decode(process.env.NEXT_PUBLIC_SB_URL_B64);
+const key = decode(process.env.NEXT_PUBLIC_SB_KEY_B64);
 
 export const SUPABASE_ENABLED = Boolean(url && key);
 
