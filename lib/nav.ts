@@ -23,6 +23,7 @@ export const navLinks: NavLink[] = [
   { label: "Resources", href: "/resources", status: "live" },
   { label: "Events", href: "/events", status: "live" },
   { label: "Team", href: "/team", status: "live" },
+  { label: "Sitemap", href: "/sitemap", status: "live" },
 ];
 
 /** Every route, for the sitemap and drawer. */
@@ -50,6 +51,7 @@ export const allRoutes: Route[] = [
   { label: "Merch", href: "/merch", status: "live", sitemap: true },
   { label: "Alumni", href: "/alumni", status: "live", sitemap: true },
   { label: "FAQ", href: "/faq", status: "live", sitemap: true },
+  { label: "Sitemap", href: "/sitemap", status: "live", sitemap: true },
 ];
 
 // -------------------------------------------------------------------------
@@ -196,6 +198,14 @@ export const paletteCommands: CommandItem[] = [
     type: "route",
     href: "/join",
     keywords: ["recruitment", "apply", "sign up"],
+  },
+  {
+    id: "sitemap",
+    glyph: "⌘",
+    label: "Sitemap",
+    type: "route",
+    href: "/sitemap",
+    keywords: ["map", "explore", "index", "pages", "everything", "directory"],
   },
   {
     id: "toggle-theme",
