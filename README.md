@@ -5,6 +5,8 @@ The website for **OptimatX**, the Mathematics Society of IIT Patna (under the Sc
 Built with **Next.js (App Router) + TypeScript + Tailwind CSS v4**, exported as a fully **static site** (`output: 'export'`) so it can be hosted for free on Vercel, GitHub Pages, or Cloudflare Pages. Math is typeset with **KaTeX** at build time; the ⌘K command palette, dark/light theme, the interactive Pascal's-triangle hero, and the Problem-of-the-Week checker are small client-side "islands".
 
 > **The most important thing about this repo is that the next team can run it.** Content lives in plain data files - you almost never need to touch a component to update the site.
+>
+> ✍️ **Adding content? Start with [CONTENT.md](CONTENT.md)** - a no-code guide to every content type (problems, events, blog, notes, newsletter, photos, and more), written for the whole team.
 
 ---
 
