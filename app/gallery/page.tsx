@@ -7,12 +7,22 @@ import { MaurerRose } from "@/components/islands/MaurerRose";
 import { Phyllotaxis } from "@/components/islands/Phyllotaxis";
 import { Harmonograph } from "@/components/islands/Harmonograph";
 import { FractalTree } from "@/components/islands/FractalTree";
+import { TimesTables } from "@/components/islands/TimesTables";
+import { StrangeAttractors } from "@/components/islands/StrangeAttractors";
+import { Mandelbrot } from "@/components/islands/Mandelbrot";
+import { ChaosGame } from "@/components/islands/ChaosGame";
+import { Truchet } from "@/components/islands/Truchet";
+import { LogisticBifurcation } from "@/components/islands/LogisticBifurcation";
+import { LSystem } from "@/components/islands/LSystem";
+import { PascalMod } from "@/components/islands/PascalMod";
+import { MandelbrotGL } from "@/components/islands/MandelbrotGL";
+import { GrayScott } from "@/components/islands/GrayScott";
 import { catVar, type CategoryColor } from "@/lib/categories";
 
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Interactive generative math art - a Julia-set fractal, a cellular automaton, and a Maurer rose. Drag the controls and watch the math move.",
+    "Interactive generative math art - fractals, strange attractors, L-systems, Truchet tilings, the chaos game, and number-theory patterns. Drag the controls and watch the math move.",
 };
 
 function Piece({
@@ -116,6 +126,97 @@ export default function GalleryPage() {
             className="lg:col-span-2"
           >
             <FractalTree />
+          </Piece>
+
+          <Piece
+            tag="Modular arithmetic"
+            color="magenta"
+            title="Times-table circle"
+            desc="Put N points on a circle and join each k to (k·m mod N). At m = 2 the Mandelbrot cardioid appears; nudge m and caustic envelopes ripple out of pure times tables."
+          >
+            <TimesTables />
+          </Piece>
+
+          <Piece
+            tag="Strange attractor"
+            color="violet"
+            title="Strange attractors"
+            desc="Iterate a 2D trig map a million times and shade each pixel by how often the orbit visits it. Two famous families - De Jong and Clifford - fold chaos into glowing dust."
+          >
+            <StrangeAttractors />
+          </Piece>
+
+          <Piece
+            tag="Escape-time fractal"
+            color="amber"
+            title="Mandelbrot set"
+            desc="Iterate z → z² + c, this time fixing z = 0 and sweeping c across the plane - the mirror of the Julia set above. Zoom into the Seahorse and Elephant valleys."
+          >
+            <Mandelbrot />
+          </Piece>
+
+          <Piece
+            tag="Iterated function system"
+            color="accent"
+            title="The chaos game"
+            desc="Pick an affine map at random and repeat, forever. Four maps grow Barnsley's fern; jumping halfway to a random triangle corner grows Sierpinski - order out of pure chance."
+          >
+            <ChaosGame />
+          </Piece>
+
+          <Piece
+            tag="Truchet tiling"
+            color="lime"
+            title="Truchet tiles"
+            desc="One square tile, two quarter-circle arcs, random orientation. That single rule, tiled across a grid, weaves endless meandering loops. Hit shuffle."
+          >
+            <Truchet />
+          </Piece>
+
+          <Piece
+            tag="L-system"
+            color="amber"
+            title="L-systems"
+            desc="Rewrite a string by simple rules, then let a turtle draw it. The same engine makes the Koch edge, the Heighway dragon, and a fern - just change the preset."
+          >
+            <LSystem />
+          </Piece>
+
+          <Piece
+            tag="Bifurcation"
+            color="accent2"
+            title="Logistic map"
+            desc="Sweep the growth rate of x → r·x·(1−x) and watch a fixed point split - 2, 4, 8 - then shatter into chaos near r = 3.5699, with a calm period-3 window hiding at 3.83."
+            className="lg:col-span-2"
+          >
+            <LogisticBifurcation />
+          </Piece>
+
+          <Piece
+            tag="Number theory"
+            color="magenta"
+            title="Pascal's triangle mod n"
+            desc="Colour each entry of Pascal's triangle by its remainder mod p. Mod 2 is the Sierpinski triangle - the same fractal as Rule 90 and the chaos game, reached by a third road."
+          >
+            <PascalMod />
+          </Piece>
+
+          <Piece
+            tag="GPU · WebGL"
+            color="violet"
+            title="Mandelbrot, on the GPU"
+            desc="The same z² + c, but every pixel iterates in parallel on your graphics card - so you can zoom in real time. Click to dive; the Seahorse and Elephant valleys are waiting."
+          >
+            <MandelbrotGL />
+          </Piece>
+
+          <Piece
+            tag="Reaction-diffusion"
+            color="accent"
+            title="Turing patterns, alive"
+            desc="Two chemicals feed and kill each other as they diffuse. From a few seed dots grow coral, spots, mazes, and cells that split like mitosis - morphogenesis in motion. Click to seed."
+          >
+            <GrayScott />
           </Piece>
         </div>
       </section>

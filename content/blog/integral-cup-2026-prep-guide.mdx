@@ -1,0 +1,238 @@
+---
+title: "The Integral Cup 2026 Prep Guide: Four Tracks, One Month"
+date: "2026-07-08"
+author: "Prabhudutt Prusti"
+description: "Book verdicts, chapter maps, and a week-by-week plan for all four tracks of Integral Cup Season 2, calibrated against the official sample papers."
+tags: ["competitions", "integral-cup", "prep-guide"]
+---
+
+Season 2 of the [Integral Cup](https://www.theintegralcup.in/) runs this autumn, and it is a different animal from a campus integration bee. The format escalates across three rounds: Round 1 is an offline, answer-only MCQ preliminary held at 50+ centers nationwide, Round 2 brings the top 500 into an online olympiad, and a grand finale follows. Registration is free, every branch and year of undergraduate study is eligible, and at the time of writing the official FAQ says you register once and pick three of the four tracks. Check the official site for the current rules and dates before you plan anything around this post.
+
+This is our prep guide for the four Season 2 tracks: **Discrete Mathematics**, **Number Theory**, **Mathematics in Machine Learning**, and **Reinforcement Learning**. It is built from three sources - the official track syllabi, the organizers' recommended reading lists, and, most importantly, the four official sample papers, which quietly change what "prepared" means. Everything below is calibrated against those papers.
+
+## The four tracks at a glance
+
+- **Track 1 - Discrete Mathematics.** Combinatorics and counting, graph theory, logic and proof techniques, recurrence relations, discrete probability, generating functions. Primary text: Rosen.
+- **Track 2 - Number Theory.** Divisibility and congruences, primes, modular arithmetic, Diophantine equations, the Euler and Fermat theorems, cryptography basics. Primary text: Burton or Niven-Zuckerman-Montgomery, with five chapters of Apostol alongside.
+- **Track 3 - Mathematics in Machine Learning.** Optimization for learning, linear algebra in ML, probability models, loss functions, gradient descent, neural network foundations. Primary text: *Mathematics for Machine Learning*, then targeted Bishop and Goodfellow.
+- **Track 4 - Reinforcement Learning.** Markov decision processes, policy and value functions, Bellman equations, dynamic programming, temporal-difference learning, exploration and exploitation. Primary text: Sutton and Barto, full stop.
+
+## First, calibrate: what the sample papers reveal
+
+**These problems are genuinely olympiad-caliber, not GATE-level.** A few reference points from the four sample papers:
+
+- The Number Theory paper's Q5 is Wolstenholme's theorem: for a prime $p \ge 5$, the numerator of $1 + \tfrac{1}{2} + \cdots + \tfrac{1}{p-1}$ is divisible by $p^2$.
+- NT Q6 is a classic Vieta-jumping, infinite-descent problem.
+- The Discrete Math paper's Q3 is Euler's partition identity: partitions into distinct parts equal partitions into odd parts.
+- The ML paper opens with a data-processing-inequality question, and its second problem requires a first-order perturbation of a matrix inverse.
+
+This is Putnam and ISI-entrance territory. If your plan was to drill standard MCQ banks, you would walk into Round 1 under-prepared - for Tracks 1 and 2 especially.
+
+### An MCQ round, proof-style samples
+
+Round 1 is answer-only MCQ. And yet eight of the sixteen sample problems literally say "Prove that...", and the ML paper asks you to justify your answer. The likely reconciliation: the samples showcase the competition's overall style, later rounds included, while Round 1 poses the *same content* in answer-only form. That resolution is the spine of this entire guide: train yourself to **solve to the answer at this difficulty level** - which is exactly what MCQ rewards - and treat formal proof-writing as an investment you make only after clearing Round 1.
+
+One nuance. Track 1's official syllabus lists "Logic and Proof Techniques" as a topic. In MCQ form, that means questions *about* logic - the validity of arguments, negating quantified statements, recognizing which proof technique applies where. That is content to study (Rosen Ch. 1), not proof-writing to practice.
+
+### Two topic corrections the samples force
+
+**Track 3 is statistical-ML math, not numerical methods.** The website blurb mentions numerical methods and computational geometry, but the recommended books (Bishop, Goodfellow, Murphy), the topic list the organizers shared on their Discord (regression, regularization, SVMs, clustering, neural networks, information theory), and the sample paper itself (information theory plus ridge regression) all point the same way: statistical machine learning. When the books, the Discord and the sample all agree against the blurb, trust them. We have dropped Burden and Faires from the plan and downweighted computational geometry accordingly.
+
+**Track 4 includes multi-armed bandits and policy gradients.** The official topic tags list exploration and exploitation, and sample Problem 2 is a straight REINFORCE computation. Neither is optional.
+
+### Where to practice (and the GATE correction)
+
+For Tracks 1 and 2, GATE-style question banks are simply the wrong flavor. Sources that actually match:
+
+- **ISI B.Stat and B.Math entrance papers** - the UGA objective papers in particular.
+- **TOMATO**, ISI's official *Test of Mathematics at the 10+2 Level* - objective, olympiad-flavored, and widely available in India.
+- **CMI entrance papers.**
+- **Putnam problems with numeric answers** - [Kedlaya's free archive](https://kskedlaya.org/putnam-archive/) is the goldmine.
+
+GATE still earns its keep in two places: linear algebra and probability speed work for Track 3, and the algorithms-and-complexity slice of Track 1.
+
+## Paid vs free: the straight answer
+
+The good news is that the consensus-best books for these tracks are mostly free, officially: *Mathematics for Machine Learning* has a [free PDF](https://mml-book.github.io/), Sutton and Barto is [free from the authors](http://incompleteideas.net/book/the-book-2nd.html), Goodfellow's *Deep Learning* is free at [deeplearningbook.org](https://www.deeplearningbook.org/), Bishop's *Pattern Recognition and Machine Learning* has an official free PDF via Microsoft Research, and Murphy's books are free at [probml.github.io](https://probml.github.io/).
+
+What is genuinely worth buying: **Rosen** and one main number theory text (**Burton**, **Niven-Zuckerman-Montgomery**, or **Apostol** - all have inexpensive Indian editions), **TOMATO**, and **Engel's *Problem-Solving Strategies*** (or a library copy). Optionally, **Cover and Thomas** for information theory and **AoPS *Intermediate Counting and Probability*** if Track 1 is your headline track. Nothing on this list requires an expensive subscription.
+
+## Track 1 - Discrete Mathematics
+
+*Official topics: combinatorics and counting · graph theory · logic and proof techniques · recurrence relations · discrete probability · generating functions.*
+
+### Book verdicts
+
+- **Rosen, *Discrete Mathematics and Its Applications* (8th ed.) - use as your primary text.** Organizer-endorsed, written exactly at advanced-first-year level, with huge exercise banks and answers to the odd-numbered problems.
+- **West, *Introduction to Graph Theory* (2nd ed.) - use selectively.** Rigorous and proof-dense; overkill as a cover-to-cover read in a month. Dip into Ch. 1-2 (fundamentals, trees and distance) and the statements of the key coloring and planarity results if this track is your top pick. Sample Q6 - a graph with minimum degree 3 contains an even cycle - is exactly West-flavored.
+- **Stanley, *Enumerative Combinatorics* Vol. 1 - skip.** A graduate research reference, famously hard even for PhD students. Its presence on the list signals the ceiling of the track, not the floor you need.
+
+### Chapter map (Rosen, 8th ed.)
+
+- **Ch. 1** - logic and proofs: propositions, quantifiers, rules of inference, proof strategies *as recognizable content*. This is the "Logic and Proof Techniques" tag.
+- **Ch. 3** - algorithms and growth of functions (big-$O$). This is the complexity slice of the track blurb.
+- **Ch. 6** - counting: product and sum rules, pigeonhole, permutations and combinations, binomial coefficients, distributions (stars and bars).
+- **Ch. 7** - discrete probability. Fast going if you have a first probability course behind you.
+- **Ch. 8** - advanced counting: 8.1-8.3 recurrence relations and how to solve them, 8.4 generating functions, 8.5-8.6 inclusion-exclusion. Sample Q5 - a recurrence for binary strings avoiding 0101 - lives here.
+- **Ch. 10-11** - graphs and trees: representations, connectivity, Euler and Hamilton, planarity, coloring, tree properties.
+- Skim Ch. 2 and Ch. 5 (sets and functions, induction) as needed. Bonus: **Ch. 4 (Number Theory and Cryptography) doubles as your Track 2 on-ramp** - modular arithmetic, primes and gcds, the CRT, Fermat's little theorem and RSA in a single chapter.
+
+**Supplements:** Wilf's *generatingfunctionology*, Ch. 1-2 (free PDF on Wilf's UPenn page), if generating functions feel thin in Rosen; AoPS *Intermediate Counting and Probability* is the best drill book at exactly this level for recurrences, generating functions and inclusion-exclusion.
+
+### Practice
+
+The official DM sample first - solve all six to a definite answer, including extracting the answer from the proof-style ones. Q1 is a one-line $\binom{9}{5}$ once you see it. Then TOMATO and ISI UGA items on combinatorics and graphs, Putnam A1/B1-level counting problems, GATE CS for the algorithms-and-complexity slice only, and Brilliant for daily reps.
+
+### Memorize cold
+
+- The counting rules, stars and bars, inclusion-exclusion, pigeonhole, and the standard binomial identities.
+- Solving linear recurrences via characteristic roots.
+- The standard generating-function expansions, starting with $\frac{1}{(1-x)^k}$ and the binomial series.
+- The handshake lemma and parity arguments.
+- The Euler and Hamilton conditions.
+- Euler's formula $V - E + F = 2$ and its planarity consequences.
+- Tree facts: $n - 1$ edges, leaf counts.
+- Basic expectation and linearity-of-expectation tricks.
+- The big-$O$ hierarchy.
+
+## Track 2 - Number Theory
+
+*Official topics: divisibility and congruences · prime numbers · modular arithmetic · Diophantine equations · Euler and Fermat theorems · cryptography basics.*
+
+### Book verdicts
+
+- **Niven, Zuckerman and Montgomery (5th ed.) - use as the main official text.** The most appropriate of the officially listed books: rigorous but self-contained, with excellent problems. Demanding for a first-year background, but doable with effort.
+- **Apostol, *Introduction to Analytic Number Theory* - use exactly five chapters** (the organizer's pick). Elegant but terse. Read **Ch. 1** (the fundamental theorem of arithmetic), **Ch. 2** (arithmetical functions: $\phi$, $\mu$, Dirichlet convolution), **Ch. 5** (congruences: Fermat and Euler, Lagrange's theorem, the CRT), **Ch. 9** (quadratic residues, the Legendre symbol, reciprocity) and **Ch. 10** (primitive roots). **Skip the analytic half** - Ch. 3-4, 7-8 and 11-14 on Dirichlet series, prime distribution and the zeta function need real analysis and will not be tested at Round 1 depth. Note that Apostol has no Diophantine-equations or cryptography chapters, so it cannot be your only book.
+- **Hardy and Wright - skip as a study text.** Encyclopedic, beautiful, zero exercises. Reference only.
+- **Ireland and Rosen - skip.** It assumes abstract algebra most of us have not taken; it is a graduate text.
+- **Our addition: Burton, *Elementary Number Theory* (7th ed., cheap Indian edition) - the gentlest full-coverage option.** If NZM and Apostol feel steep in week one, switch your spine to Burton and keep Apostol for the organizer-flavored polish. Burton covers every official topic tag, cryptography chapter included, with hundreds of computational exercises.
+
+### Reading map
+
+With Burton or NZM as the spine and Apostol in parallel: divisibility, the Euclidean algorithm and Bezout → congruences and the CRT (drill CRT-based counting hard - sample Q1, counting $n \le 600$ with $n^2 \equiv n \pmod{30}$, is pure CRT) → Fermat's little theorem, Euler's theorem, $\phi$ and multiplicative functions, Wilson's theorem → orders and primitive roots → quadratic residues and the Legendre symbol at recognition level → the Diophantine chapter (linear equations, Pythagorean triples, descent arguments, perfect-square analysis) → the cryptography chapter (RSA, Diffie-Hellman), or Rosen's Ch. 4 for the same material in fewer pages.
+
+### Techniques the sample paper says to master
+
+- CRT counting (Q1).
+- Showing an expression cannot be a perfect square by trapping it between consecutive squares (Q2, Q4).
+- The gcd behavior of recursively defined sequences in the style of Sylvester's sequence (Q3).
+- Harmonic-sum congruences mod $p$ and mod $p^2$ - know Wolstenholme's statement even if you never prove it (Q5).
+- *Recognizing* Vieta-jumping setups, so you can guess and verify the constant quickly in MCQ form (Q6).
+
+### Practice
+
+The official NT sample; Project Euler problems 1-100 filtered for number theory, done on paper or with light code; TOMATO and ISI UGA number theory items; Putnam number theory problems with numeric answers; and Engel's number theory chapter for technique patterns.
+
+### Memorize cold
+
+- The Euclidean algorithm and Bezout's identity.
+- $p \mid ab \Rightarrow p \mid a$ or $p \mid b$.
+- The formulas for $\phi(n)$, $\sigma(n)$ and $\tau(n)$ from the prime factorization.
+- The Fermat, Euler and Wilson statements and their standard uses: fast modular exponentiation, modular inverses.
+- The full CRT procedure.
+- Order-of-an-element facts, and when primitive roots exist.
+- The Legendre symbol rules, including the $-1$ and $2$ cases.
+- Linear Diophantine solvability (the gcd condition) and the general solution.
+- The mechanics of RSA and Diffie-Hellman.
+
+## Track 3 - Mathematics in Machine Learning
+
+*Official topics: optimization for learning · linear algebra in ML · probability models · loss functions · gradient descent · neural network foundations. The organizers' Discord adds: linear regression, regularization, SVMs, clustering, neural networks, information theory.*
+
+### Book verdicts
+
+- **Deisenroth, Faisal and Ong, *Mathematics for Machine Learning* (free, organizer's pick) - start here.** Built precisely to take a first-year background up to ML math. This is your on-ramp for everything below.
+- **Bishop, *Pattern Recognition and Machine Learning* - use targeted chapters.** The official book that best matches the Discord topic list and the sample's depth. Dense, but the sections mapped below are the canonical treatments. An official free PDF exists via Microsoft Research.
+- **Goodfellow, Bengio and Courville, *Deep Learning* - use Parts I-II (free).** The most readable of the three officials; an ideal middle ground.
+- **Murphy, *Probabilistic Machine Learning* - reference only.** Free and encyclopedic, but far too big to study from in a month.
+
+### The topic map
+
+- **Foundation (roughly the first two weeks):** MML Ch. 2-4 (linear algebra, analytic geometry, matrix decompositions - eigendecomposition and the **SVD**), Ch. 5 (vector calculus - gradients, Jacobians, Hessians; section 5.6 is backpropagation), Ch. 6 (probability) and Ch. 7 (optimization - gradient descent, step sizes, **Lagrange multipliers and duality, convexity**). Watch 3Blue1Brown's *Essence of Linear Algebra* alongside for intuition.
+- **Linear regression and regularization:** MML Ch. 9 (regression, with ridge as MAP estimation), Bishop Ch. 3 (regularized least squares), and Goodfellow sections 5.2-5.4 and 7.1 (the L1 and L2 penalties). **Drill the closed forms:**
+
+$$\hat{\beta}_{\text{OLS}} = (X^\top X)^{-1} X^\top y, \qquad \hat{\beta}_{\text{ridge}} = (X^\top X + \lambda I)^{-1} X^\top y.$$
+
+  Sample Problem 2 is exactly a ridge perturbation, solved with the derivative-of-a-matrix-inverse identity. Keep the **Matrix Cookbook** open as your lookup sheet for all matrix calculus.
+- **SVMs:** MML Ch. 12 (margins, hinge loss, the dual, kernels) plus Bishop section 7.1. Know the margin geometry, the primal and dual forms, and what support vectors are.
+- **Clustering:** Bishop section 9.1 (k-means: the objective and the update steps) and section 9.2 (Gaussian mixtures and EM at a conceptual level); MML Ch. 11 covers GMMs.
+- **Neural networks:** Goodfellow Ch. 6 (feedforward nets; section 6.5 is backprop) plus Bishop sections 5.1-5.3. Be able to run backprop by hand on a two-layer network and to differentiate softmax composed with cross-entropy.
+- **Information theory (the sample opens with it):** Cover and Thomas, *Elements of Information Theory*, **Ch. 2 only** - entropy, conditional entropy, mutual information, the chain rules, and the **data-processing inequality**. Sample Problem 1 is a one-line DPI argument once you know it. Free alternative: the early chapters of MacKay's *Information Theory, Inference, and Learning Algorithms*; quick versions in Goodfellow section 3.13 or Bishop section 1.6.
+- **Loss functions (an official tag):** MSE, cross-entropy (and its information-theoretic reading), hinge. Know each one's gradient and which model it pairs with - you will cover them en route through the sections above.
+
+### Practice
+
+The official ML sample; the quizzes of Imperial's *Mathematics for Machine Learning* specialization on Coursera, audited free; the GATE DA paper plus GATE linear algebra and probability PYQs for speed; MML and Bishop end-of-chapter exercises for the listed sections; and hand-derivation drills - the OLS and ridge closed forms, the gradient of the logistic loss, one full backprop pass, and the entropy and mutual-information identities.
+
+### Memorize cold
+
+- Rank, determinant and invertibility facts.
+- The eigendecomposition and SVD definitions, and what singular values mean.
+- Positive-(semi)definite tests.
+- The projection and least-squares formulas.
+- The OLS and ridge closed forms.
+- The gradient-descent update and the definitions of convexity.
+- The Lagrangian and KKT statements at recognition level.
+- The entropy and mutual-information definitions, the chain rules, and the data-processing inequality.
+- The k-means objective.
+- The SVM margin $\frac{2}{\lVert w \rVert}$.
+- The softmax-plus-cross-entropy derivative, $\hat{y} - y$.
+- Backprop as the chain rule on a computation graph.
+
+## Track 4 - Reinforcement Learning
+
+*Official topics: Markov decision processes · policy and value functions · Bellman equations · dynamic programming · temporal-difference learning · exploration and exploitation.*
+
+### Book verdicts
+
+- **Sutton and Barto (2nd ed., free, organizer's pick) - the only text you need for Round 1.** Every official topic tag maps cleanly to a chapter.
+- **Puterman, *Markov Decision Processes* - skip for now.** Graduate-level, measure-flavored rigor; relevant only if you reach the finale and need proof depth.
+- **Bertsekas, *Dynamic Programming and Optimal Control* - skip for now.** Same reasoning - save it for the finale, if at all.
+
+### Chapter map (Sutton and Barto)
+
+- **Ch. 2 - multi-armed bandits.** This is the "Exploration and Exploitation" tag: $\varepsilon$-greedy, optimistic initialization, UCB.
+- **Ch. 3 - finite MDPs.** The MDP tuple, returns and discounting, $V$ and $Q$, and the Bellman expectation and optimality equations.
+- **Ch. 4 - dynamic programming.** Policy evaluation, policy iteration, value iteration - know exactly how they differ, and be able to run two iterations by hand.
+- **Ch. 5-6 - Monte Carlo and TD learning.** The TD(0) update, SARSA vs Q-learning, on-policy vs off-policy.
+- **Sections 13.1-13.3 - policy-gradient methods.** The REINFORCE identity:
+
+$$\nabla_\theta J = \mathbb{E}\left[\, R \, \nabla_\theta \log \pi_\theta \,\right]$$
+
+  Sample Problem 2 tests exactly this. Practice computing $\nabla J$ both directly, by writing $J$ as an explicit expectation, and via the identity - and check that the two agree.
+
+### Lectures and drills
+
+David Silver's UCL lectures **1-5** (introduction, MDPs, DP planning, model-free prediction, model-free control), **7** (policy gradient) and **9** (exploration and exploitation) - his slides are the best compressed revision sheets for this track. NPTEL's *Reinforcement Learning* course (Balaraman Ravindran, IIT Madras): do the weekly MCQ assignments for the MDP, DP and TD weeks - solutions are available, and the format matches Round 1 perfectly. The Coursera RL Specialization (University of Alberta) quizzes, audited free. And [OpenAI's Spinning Up](https://spinningup.openai.com/): the "Key Concepts" and "Intro to Policy Optimization" pages have the cleanest derivation of the log-derivative trick anywhere.
+
+### Practice pattern
+
+Build tiny two- or three-state MDPs, like sample Problem 1, and solve $V^*$ by hand. The workhorse identity: a reward of $r$ received forever is worth $\frac{r}{1-\gamma}$. Run value iteration two steps by hand. Do Sutton and Barto's short conceptual exercises for Ch. 2-6.
+
+### Memorize cold
+
+- The MDP tuple $(S, A, P, R, \gamma)$.
+- Geometric-series values: $\frac{r}{1-\gamma}$.
+- The Bellman expectation and optimality equations for $V$ and $Q$.
+- Policy evaluation vs policy iteration vs value iteration.
+- The TD(0), SARSA and Q-learning update rules.
+- The $\varepsilon$-greedy and UCB formulas.
+- The on-policy vs off-policy definitions.
+- The REINFORCE identity and the log-derivative trick.
+
+## The one-month plan (3-4 hours a day)
+
+The daily rhythm: about an hour of new material, then 1.5-2 hours of timed solving to definite answers, then 30 minutes of flashcards and cheat-sheet building. Weight everything toward the tracks you have ranked highest. This plan is built for the final month before Round 1 - if you are starting earlier, stretch weeks 2 and 3.
+
+- **Week 1 - foundations.** MML Ch. 2-6 at speed, with 3Blue1Brown alongside; Rosen Ch. 1, 3 and 6; Sutton and Barto Ch. 2-3. Start all four cheat sheets. And attempt the four sample papers cold, once, early in the week - not to score well, but to learn exactly where the gap is.
+- **Week 2 - the discrete and number theory spine.** Rosen Ch. 7-8 and 10-11 with heavy exercise drilling; Burton or NZM from divisibility through Fermat-Euler, with Apostol Ch. 1, 2 and 5 in parallel; MML Ch. 7 and the start of Ch. 9. Practice: TOMATO and ISI UGA sets for both tracks, plus Project Euler number theory.
+- **Week 3 - ML and RL depth, number theory finish.** The targeted Bishop and Goodfellow sections in order: regression and regularization → SVMs → clustering → neural nets and backprop → information theory via Cover and Thomas Ch. 2. Sutton and Barto Ch. 4-6 plus sections 13.1-13.3, with Silver's lectures 3-5, 7 and 9 and the NPTEL assignments. Number theory: primitive roots, quadratic residues, the Diophantine chapter, the crypto chapter.
+- **Week 4 - mocks and repair.** Re-sit all four sample papers, timed, solving everything to a definite answer. Mixed timed sets from ISI, CMI and Putnam-style objective problems, plus the NPTEL and Coursera quizzes. Grind the error log. Daily flashcard sprints across all four cheat sheets. Taper on the last day.
+
+## The rule that overrides everything
+
+If the organizers release official Round 1 sample papers or an updated syllabus between now and the exam, sit that material first, compare its topic weights against this plan, and reallocate immediately. An official release outranks every word of this post.
+
+---
+
+Preparing from IIT Patna? Come solve with us. The [Problem of the Week](/problems) is a good daily warm-up habit, the [resources page](/resources) has our roadmaps, and if you want study partners for a track - or you have spotted a correction to this guide - [say hello](/contact). See you at the centers.
